@@ -1,0 +1,52 @@
+body {
+  color: #333333;
+  font-family: 'Merriweather', serif;
+  margin: 0;
+}
+
+img {
+  width: 100%;
+}
+
+article {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+h1,
+h2 {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: 80px;
+  margin-bottom: 5px;
+}
+h2 {
+  color: #aaa;
+  font-size: 27px;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 22px
+}
+
+p {
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+a {
+  color: #333;
+  font-weight: bold;
+}
+
+#erika {
+    float: left;
+    max-width: 350px; max-height: 623px;
+    margin: 5px 10px 10px 0px;
+}

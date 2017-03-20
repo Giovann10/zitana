@@ -1,0 +1,32 @@
+p {
+  font-size: 36px;
+  text-align: center;
+  line-height: 130px;
+  font-family: 'Roboto', sans-serif;
+  color: #FFF;
+  width: 350px;
+  height: 130px;
+  margin: 0;
+}
+
+.north {
+  background: rgb(233, 118, 118);
+}
+
+.east {
+  background: rgb(242, 240, 98);
+}
+
+.south {
+  background: rgb(169, 230, 230);
+}
+
+.west {
+  background: rgb(118, 146, 228);
+}
+
+div {
+  width: 350px;
+  border: 15px solid rgb(66, 133, 244);
+  margin: 3px, 2px;
+}

@@ -1,0 +1,29 @@
+body {
+  padding-left: 40px;
+}
+
+h1,
+.food-type {
+  color: blue;
+}
+
+h2 {
+  color: rgb(246, 172, 0);
+}
+
+.fruits,
+.vegetables {
+  color: black;
+}
+
+ul {
+  list-style: square;
+}
+
+.fruits li {
+  list-style: disc;
+}
+
+.redbullet{
+  color: rgb(226, 10, 23);
+}

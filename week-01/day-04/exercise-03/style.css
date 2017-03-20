@@ -1,0 +1,25 @@
+p {
+  font-size: 36px;
+  margin: 0;
+  text-align: center;
+  line-height: 130px;
+  font-family: 'Roboto', sans-serif;
+  color: #FFF;
+  width: 350px;
+  height: 130px;
+  background-color: rgb(14, 145, 161);
+}
+
+.north {
+  background: rgb(233, 118, 118);
+}
+
+.south {
+  background: rgb(169, 230, 230);
+}
+
+.box {
+  width: 350px;
+  border: 16px solid rgb(66, 133, 244);
+  margin: 2px 1px 4px 3px;
+}
