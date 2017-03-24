@@ -16,9 +16,7 @@ public class GuessMyNumber {
   
     int myNumber = randInt(1, range);
   
-    System.out.println("\nGot it!");
-    TimeUnit.SECONDS.sleep(1);
-    System.out.println("You can quess 5 times.\nEnter your first guess:");
+    System.out.println("\nGot it!\nYou can guess 5 times.\nEnter your first guess:");
   
     int guess = scanner.nextInt();
   
@@ -27,15 +25,16 @@ public class GuessMyNumber {
         System.out.println("That is correct! My number is " + myNumber + " indeed.");
         break;
       } else if (guess < myNumber) {
-        System.out.println("Too low! You have " + i + " lives left. Try again:");
+        System.out.println("Too low! Lives left: " + i + " Try again:");
         guess = scanner.nextInt();
       } else if (guess > myNumber) {
-        System.out.println("Too high! You have " + i + " lives left. Try again:");
+        System.out.println("Too high! Lives left: " + i + " Try again:");
         guess = scanner.nextInt();
-      } else if (guess != myNumber && i == 1){
-        System.out.println("You have run out of lives.\n :(\nMy number was: " + myNumber);
       }
     }
+      if (guess != myNumber) {
+        System.out.println("You have run out of lives.\n :(\nMy number was: " + myNumber);
+      }
   }
   
   public static int randInt(int min, int max) {
