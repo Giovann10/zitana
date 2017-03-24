@@ -25,15 +25,15 @@ public class GuessMyNumber {
         System.out.println("That is correct! My number is " + myNumber + " indeed.");
         break;
       } else if (guess < myNumber) {
-        System.out.println("Too low! Lives left: " + i + " Try again:");
+        System.out.println("Too low! Try again! (Lives left: " + i + "):");
         guess = scanner.nextInt();
       } else if (guess > myNumber) {
-        System.out.println("Too high! Lives left: " + i + " Try again:");
+        System.out.println("Too high! Try again! (Lives left: " + i + "):");
         guess = scanner.nextInt();
       }
     }
       if (guess != myNumber) {
-        System.out.println("You have run out of lives.\n :(\nMy number was: " + myNumber);
+        System.out.println("You have run out of lives :(\nMy number was: " + myNumber);
       }
   }
   
