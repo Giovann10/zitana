@@ -11,5 +11,8 @@ public class ElementFinder {
     } else {
       System.out.println("Nooooo");
     }
+    
+    for (int i=0 ; i < arrayList.size(); i++) {
+      
   }
 }
