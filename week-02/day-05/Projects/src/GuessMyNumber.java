@@ -20,16 +20,16 @@ public class GuessMyNumber {
   
     int guess = scanner.nextInt();
   
-    for (int i = 5; i > 0; i--) {
-      if (guess == myNumber) {
-        System.out.println("That is correct! My number is " + myNumber + " indeed.");
-        break;
-      } else if (guess < myNumber) {
+    for (int i = 4; i > 0; i--) {
+      if (guess < myNumber) {
         System.out.println("Too low! Try again! (Lives left: " + i + "):");
         guess = scanner.nextInt();
       } else if (guess > myNumber) {
         System.out.println("Too high! Try again! (Lives left: " + i + "):");
         guess = scanner.nextInt();
+      } else if (guess == myNumber) {
+        System.out.println("That is correct! My number is " + myNumber + " indeed.");
+        break;
       }
     }
       if (guess != myNumber) {
@@ -42,5 +42,4 @@ public class GuessMyNumber {
     int randNum = rand.nextInt(max - min + 1) + min;
     return randNum;
   }
-  
 }
