@@ -6,9 +6,9 @@ public class DrawSquare {
     Scanner scanner = new Scanner(System.in);
     int n = scanner.nextInt();
     
-    for (int i = 0 ; i < n+1; i++) {
+    for (int i = 0 ; i < n; i++) {
       System.out.println();
-      if (i == 0 || i == n) {
+      if (i == 0 || i == n-1) {
         for (int j = 0; j < n; j++) {
           System.out.print("%");
         }
