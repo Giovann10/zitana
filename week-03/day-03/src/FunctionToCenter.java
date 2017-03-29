@@ -8,7 +8,24 @@ public class FunctionToCenter {
     // the x and y coordinates of the line's starting point
     // and draws a line from that point to the center of the canvas.
     // fill the canvas with lines from the edges, every 20 px, to the center.
+    int x = 0;
+    int y = 0;
     
+    graphics.setColor(Color.BLUE);
+    
+    for (int i = 0; i < 4; i++) {
+      if(i%2==0)
+      for (int j = 0; j <= 300; j += 20){
+        drawToCenter(x,j,graphics);
+      }
+      x=300;
+      if (i%2==1) {
+        for (int j = 0; j < 300; j += 20){
+          drawToCenter(j,y,graphics);
+        }
+        y=300;
+      }
+    }
   }
   
   public static void drawToCenter (int x, int y, Graphics graphics) {
