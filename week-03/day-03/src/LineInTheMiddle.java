@@ -15,7 +15,6 @@ public class LineInTheMiddle {
     
     graphics.setColor(Color.GREEN);
     graphics.drawLine(150, 0, 150, 300);
-    
   }
   
   public static void main(String[] args) {
@@ -32,7 +31,6 @@ public class LineInTheMiddle {
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
       mainDraw(graphics);
-      
     }
   }
 }
