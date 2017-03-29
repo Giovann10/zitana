@@ -11,28 +11,16 @@ public class LinePlayQuarters {
     graphics.setColor(Color.GREEN);
     for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(0, i, i, 150);
-    }
-    for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(0, i+150, i, 300);
-    }
-    for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(150, i, i+150, 150);
-    }
-    for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(150, i+150, i+150, 300);
     }
   
     graphics.setColor(new Color(142, 0, 237));
     for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(i, 0, 150, i);
-    }
-    for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(150, i + 150, i, 150);
-    }
-    for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(i+150, 0, 300, i);
-    }
-    for (int i = 0; i < 150; i += 20) {
       graphics.drawLine(i + 150,150, 300, i+150);
     }
   }
