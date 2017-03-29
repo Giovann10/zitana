@@ -14,8 +14,10 @@ public class ConnectTheDots {
     // connect these: {{50, 100}, {70, 70}, {80, 90}, {90, 90}, {100, 70},
     // {120, 100}, {85, 130}, {50, 100}}
     
+    int[][] box = {{10, 10}, {290,  10}, {290, 290}, {10, 290}};
     int[][] dotsToConnect = {{50, 100}, {70, 70}, {80, 90}, {90, 90}, {100, 70}, {120, 100}, {85, 130}, {50, 100}};
     
+    connect(box,graphics);
     connect(dotsToConnect, graphics);
     
   }
