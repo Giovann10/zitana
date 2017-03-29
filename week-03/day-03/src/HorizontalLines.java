@@ -8,12 +8,19 @@ public class HorizontalLines {
     // the x and y coordinates of the line's starting point
     // and draws a 50 long horizontal line from that point.
     // draw 3 lines with that function.
-    
-    
-    
+    drawHorizontal(graphics);
+    drawHorizontal(graphics);
+    drawHorizontal(graphics);
   }
   
-  //    Don't touch the code below
+  public static void drawHorizontal (Graphics graphics) {
+    graphics.setColor(Color.ORANGE);
+    int x = (int)(Math.random()*300);
+    int y = (int)(Math.random()*300);
+    graphics.drawLine(x , y , x + 50, y);
+  }
+  
+
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
     jFrame.setSize(new Dimension(300, 300));
