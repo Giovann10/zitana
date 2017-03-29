@@ -21,6 +21,7 @@ public class ConnectTheDots {
   }
   
   public static void connect (int [][] dots , Graphics graphics) {
+    graphics.setColor(Color.GREEN);
     int startX = 0;
     int startY = 0;
     int endX = 0;
