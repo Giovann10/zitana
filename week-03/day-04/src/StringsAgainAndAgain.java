@@ -10,10 +10,8 @@ public class StringsAgainAndAgain {
       return "";
     } else if ( input.length() == 1) {
       return input.charAt(0) + separate(input.substring(1));
-    } else if (input.charAt(0) != '*') {
-      return input.charAt(0) + "*" + separate(input.substring(1));
     } else {
-      return input.charAt(0) +separate(input.substring(1));
+      return input.charAt(0) + "*" + separate(input.substring(1));
     }
   }
 }
