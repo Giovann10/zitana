@@ -5,10 +5,15 @@ public class StringsAgainAndAgain {
     System.out.println(separate("greenfox"));
   }
   public static String separate (String input) {
-    if (input.contains("*")) {
-      return input;
+    
+    if (input.length() == 0) {
+      return "";
+    } else if ( input.length() == 1) {
+      return input.charAt(0) + separate(input.substring(1));
+    } else if (input.charAt(0) != '*') {
+      return input.charAt(0) + "*" + separate(input.substring(1));
     } else {
-      return separate(input.replace("", "*"));
+      return input.charAt(0) +separate(input.substring(1));
     }
   }
 }

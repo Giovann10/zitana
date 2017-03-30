@@ -5,10 +5,12 @@ public class Strings {
     System.out.println(changeXY("yyXXxxyxXxx"));
   }
   public static String changeXY (String input) {
-    if (! input.contains("x")) {
-      return input;
+    if ( input.length() == 0){
+      return "";
+    } else if (input.charAt(0) == 'x') {
+      return 'y' + (changeXY(input.substring(1)));
     } else {
-      return changeXY(input.replace("x" , "y"));
+      return input.charAt(0) + (changeXY(input.substring(1)));
     }
   }
 }
