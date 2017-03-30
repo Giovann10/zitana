@@ -24,17 +24,9 @@ public class ConnectTheDots {
   
   public static void connect (int [][] dots , Graphics graphics) {
     graphics.setColor(Color.GREEN);
-    int startX = 0;
-    int startY = 0;
-    int endX = 0;
-    int endY = 0;
     
     for (int i = 0; i < dots.length - 1; i++) {
-        startX = dots[i][0];
-        startY = dots[i][1];
-        endX = dots[i + 1][0];
-        endY = dots[i + 1][1];
-        graphics.drawLine(startX, startY, endX, endY);
+        graphics.drawLine(dots[i][0],dots[i][1] ,dots[i + 1][0] ,dots[i + 1][1]);
     }
   }
   
