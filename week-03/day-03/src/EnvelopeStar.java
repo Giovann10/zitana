@@ -6,7 +6,7 @@ public class EnvelopeStar {
   public static void mainDraw(Graphics graphics){
   
     graphics.setColor(Color.GREEN);
-    for (int i = 0; i < 150; i += 10) {
+    for (int i = 0; i <= 150; i += 10) {
       graphics.drawLine(i, 150, 150, 150 - i);
       graphics.drawLine(i, 150, 150, 150 + i);
       graphics.drawLine(150, i, 150 + i, 150);
