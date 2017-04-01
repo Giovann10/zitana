@@ -5,24 +5,29 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class SquareGrid {
   public static void mainDraw(Graphics graphics) {
+    Graphics2D g2d = (Graphics2D) graphics;
     int x = 256;
     int y = 256;
     int size = 512;
+    int stroke = 16;
     
-    square(x,y,size,graphics);
+    square(x,y,size,stroke,g2d);
     
   }
   
-  public static void square (int x, int y, int size, Graphics graphics) {
+  public static void square (int x, int y, int size, int stroke, Graphics2D graphics) {
+    graphics.setColor(Color.BLACK);
+    graphics.setStroke(new BasicStroke(stroke));
     graphics.drawRect(x - size/4,y - size/4, size/2, size/2 );
     
     if (size < 100) {
       return;
     } else {
-      square(x - size/4,y - size/4, size/2, graphics);
-      square(x + size/4,y + size/4, size/2, graphics);
-      square(x - size/4,y + size/4, size/2, graphics);
-      square(x + size/4,y - size/4, size/2, graphics);
+      
+      square(x - size/4,y - size/4, size/2, stroke - 5, graphics);
+      square(x + size/4,y + size/4, size/2, stroke - 5, graphics);
+      square(x - size/4,y + size/4, size/2, stroke - 5, graphics);
+      square(x + size/4,y - size/4, size/2, stroke - 5, graphics);
     }
   }
   
