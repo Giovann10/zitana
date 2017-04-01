@@ -13,19 +13,19 @@ public class SierpinskyCarpet {
   }
   
   public static void square (int x, int y, int size, Graphics graphics) {
-    graphics.fillRect(x+size/3,y + size/3, size/3, size/3 );
+    graphics.fillRect(x + size/3,y + size/3, size/3, size/3 );
     
     if (size < 10) {
       return;
     } else {
       square(x, y, size/3, graphics);
-      square(x+size/3, y, size/3,graphics);
-      square(x+2*(size/3), y, size/3, graphics);
-      square(x, y+size/3, size/3,graphics);
-      square(x+2*(size/3), y+size/3, size/3, graphics);
-      square(x, y+2* size/3, size/3,graphics);
-      square(x+size/3, y+2* size/3, size/3, graphics);
-      square(x+2*(size/3), y+2* size/3, size/3,graphics);
+      square(x + size/3, y, size/3,graphics);
+      square(x + 2*(size/3), y, size/3, graphics);
+      square(x, y + size/3, size/3,graphics);
+      square(x + 2*(size/3), y+size/3, size/3, graphics);
+      square(x, y + 2* size/3, size/3,graphics);
+      square(x + size/3, y+2* size/3, size/3, graphics);
+      square(x + 2*(size/3), y + 2* size/3, size/3,graphics);
     }
   }
   

@@ -13,17 +13,16 @@ public class Triangles {
   }
 
   public static void triangle (int x, int y, int size, Graphics graphics) {
-    int[] xPoints = {x, x+size, x+size/2};
-    int[] yPoints = {y, y, y+size};
+    int[] xPoints = {x, x + size, x + size/2};
+    int[] yPoints = {y, y, y + size};
     graphics.drawPolygon(xPoints, yPoints, 3);
 
     if (size < 10) {
       return;
-
     } else {
       triangle(x, y, size / 2, graphics);
       triangle(x + size/2, y, size/2, graphics);
-      triangle(x + (size / 2) / 2, y+size / 2, size / 2, graphics);
+      triangle(x + (size / 2) / 2, y + size / 2, size / 2, graphics);
     }
   }
   
@@ -35,6 +34,7 @@ public class Triangles {
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
   }
+  
   static class ImagePanel extends JPanel{
     @Override
     protected void paintComponent(Graphics graphics) {

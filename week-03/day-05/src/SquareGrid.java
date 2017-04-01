@@ -19,10 +19,10 @@ public class SquareGrid {
     if (size < 100) {
       return;
     } else {
-      square(x - size/4,y - size/4, size / 2, graphics);
-      square(x + size/4,y + size/4, size / 2, graphics);
-      square(x - size/4,y + size/4, size / 2, graphics);
-      square(x + size/4,y - size/4, size / 2, graphics);
+      square(x - size/4,y - size/4, size/2, graphics);
+      square(x + size/4,y + size/4, size/2, graphics);
+      square(x - size/4,y + size/4, size/2, graphics);
+      square(x + size/4,y - size/4, size/2, graphics);
     }
   }
   
