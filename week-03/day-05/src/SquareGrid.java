@@ -1,37 +1,34 @@
 import javax.swing.*;
 import java.awt.*;
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class SierpinskyCarpet {
+public class SquareGrid {
   public static void mainDraw(Graphics graphics) {
-    int x = 0;
-    int y = 0;
-    int size = 729;
+    int x = 256;
+    int y = 256;
+    int size = 512;
     
     square(x,y,size,graphics);
     
   }
   
   public static void square (int x, int y, int size, Graphics graphics) {
-    graphics.fillRect(x+size/3,y + size/3, size/3, size/3 );
+    graphics.drawRect(x - size/4,y - size/4, size/2, size/2 );
     
-    if (size < 10) {
+    if (size < 100) {
       return;
     } else {
-      square(x, y, size/3, graphics);
-      square(x+size/3, y, size/3,graphics);
-      square(x+2*(size/3), y, size/3, graphics);
-      square(x, y+size/3, size/3,graphics);
-      square(x+2*(size/3), y+size/3, size/3, graphics);
-      square(x, y+2* size/3, size/3,graphics);
-      square(x+size/3, y+2* size/3, size/3, graphics);
-      square(x+2*(size/3), y+2* size/3, size/3,graphics);
+      square(x - size/4,y - size/4, size / 2, graphics);
+      square(x + size/4,y + size/4, size / 2, graphics);
+      square(x - size/4,y + size/4, size / 2, graphics);
+      square(x + size/4,y - size/4, size / 2, graphics);
     }
   }
   
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
-    jFrame.setSize(new Dimension(729, 729));
+    jFrame.setSize(new Dimension(512, 512));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
@@ -47,3 +44,4 @@ public class SierpinskyCarpet {
     }
   }
 }
+
