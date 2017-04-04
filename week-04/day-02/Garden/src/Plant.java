@@ -8,6 +8,7 @@ public class Plant {
     setWaterLevel(getWaterLevel() + water * getAbsorbRate());
   }
   
+  
   public String getColor() {
     return color;
   }
@@ -45,5 +46,15 @@ public class Plant {
     this.absorbRate = 0.5;
     this.threshold = 10;
     this.waterLevel = 0;
+  }
+  
+  @Override
+  public String toString() {
+    return "Plant{" +
+            "color='" + color + '\'' +
+            ", waterLevel=" + waterLevel +
+            ", absorbRate=" + absorbRate +
+            ", threshold=" + threshold +
+            '}';
   }
 }
