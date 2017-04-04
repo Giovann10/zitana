@@ -6,5 +6,10 @@ public class GreenFoxApp {
     
     Student myStudent = new Student();
     myStudent.introduce();
+    myStudent.skipDays(5);
+    myStudent.introduce();
+    
+    Person myPersonAsStudent = new Student();
+    myPersonAsStudent.introduce();
   }
 }

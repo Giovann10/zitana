@@ -3,6 +3,10 @@ public class Student extends Person {
   private String previousOrganisation;
   public int skippedDays;
   
+  public int getSkippedDays() {
+    return this.skippedDays;
+  }
+  
   @Override
   public void introduce() {
     System.out.println("Hi, I'm " + this.getName()
