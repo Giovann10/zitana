@@ -23,7 +23,7 @@ public class Sponsor extends Person {
   }
 
   public void hire() {
-    hiredStudents++;
+    this.hiredStudents = hiredStudents + 1;
   }
 
   public Sponsor(String name, int age, String gender, String company) {
