@@ -3,5 +3,8 @@ public class GreenFoxApp {
     Person myPerson = new Person();
     myPerson.introduce();
     myPerson.getGoal();
+    
+    Student myStudent = new Student();
+    myStudent.introduce();
   }
 }
