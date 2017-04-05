@@ -8,7 +8,7 @@ public class AnagramTest {
   public void isAnagram() throws Exception {
     Anagram ana = new Anagram();
     assertTrue(ana.isAnagram("abcde", "edcba"));
-    assertFalse();
+    assertFalse(ana.isAnagram("kbjzb", "bukbjzv"));
   }
   
 }
