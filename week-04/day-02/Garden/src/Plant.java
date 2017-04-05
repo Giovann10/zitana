@@ -8,7 +8,6 @@ public class Plant {
     setWaterLevel(getWaterLevel() + water * getAbsorbRate());
   }
   
-  
   public String getColor() {
     return color;
   }

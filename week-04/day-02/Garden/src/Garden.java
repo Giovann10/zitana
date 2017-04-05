@@ -40,7 +40,7 @@ public class Garden {
     for (int i = 0; i < plantsToWater.size(); i++) {
       plantsToWater.get(i).absorb(amountOfWater / plantsToWater.size());
     }
-    System.out.println("Watering with" + amountOfWater);
+    System.out.println("\nWatering with" + amountOfWater);
   }
   
   public static void printer (ArrayList<Plant> garden) {
