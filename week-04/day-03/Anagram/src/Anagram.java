@@ -2,15 +2,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Anagram {
-  public static void main(String[] args) {
-    System.out.println("This program checks if two words are anagrams.\nPlease enter the first word:");
-    Scanner scanner = new Scanner(System.in);
-    String firstWord = scanner.nextLine();
-    System.out.println("Please enter the second word:");
-    String secondWord = scanner.nextLine();
-    
-    System.out.println("The two words are anagrams: " + isAnagram(firstWord , secondWord));
-    
+  Anagram() {
+  
   }
   
   public static boolean isAnagram (String s1 , String s2){
