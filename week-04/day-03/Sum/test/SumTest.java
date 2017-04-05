@@ -36,7 +36,7 @@ public class SumTest {
   public void testSumWithNull() throws Exception {
     Sum mySum = new Sum();
     ArrayList<Integer> listOfIntegers = new ArrayList<>();
-    assertTrue(mySum.sum(listOfIntegers) == null);
+    assertNull(mySum.sum(listOfIntegers));
   }
   
 }
