@@ -66,8 +66,7 @@ public class CAB {
   
   public static void main(String[] args) {
     CAB game = new CAB();
-    System.out.println(game);
-    System.out.println(game.guessNumber(5432));
+
   }
   
 }
