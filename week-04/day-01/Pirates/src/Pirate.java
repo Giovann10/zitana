@@ -1,8 +1,24 @@
 public class Pirate {
-  int drunkennessLevel;
-  boolean isAlive;
+  private int drunkennessLevel;
+  private boolean isAlive;
   
-  private void drinkSomeRum() {
+  public void setDrunkennessLevel(int drunkennessLevel) {
+    this.drunkennessLevel = drunkennessLevel;
+  }
+  
+  public void setAlive(boolean alive) {
+    isAlive = alive;
+  }
+  
+  public int getDrunkennessLevel() {
+    return drunkennessLevel;
+  }
+  
+  public boolean isAlive() {
+    return isAlive;
+  }
+  
+  public void drinkSomeRum() {
     if (this.isAlive) {
       this.drunkennessLevel += 1;
     } else {
@@ -23,11 +39,11 @@ public class Pirate {
     }
   }
   
-  private void die() {
+  public void die() {
     this.isAlive = false;
   }
   
-  private void brawl(Pirate pirateToFight) {
+  public void brawl(Pirate pirateToFight) {
     int outcome = (int)(Math.random() * 3);
     if (outcome == 1) {
       this.die();
@@ -39,9 +55,12 @@ public class Pirate {
     }
   }
   
-  private Pirate() {
-    this.isAlive = true;
-    this.drunkennessLevel = 0;
+  public boolean isPassedOut() {
+    return this.getDrunkennessLevel() == 0;
   }
   
+  public Pirate() {
+    this.isAlive = true;
+    this.drunkennessLevel = 1;
+  }
 }
