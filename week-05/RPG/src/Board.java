@@ -46,11 +46,12 @@ public class Board extends JComponent implements KeyListener {
           PositionedImage floor = new PositionedImage("wall.png", i * 72, j * 72);
           floor.draw(graphics);
         }
-  
-        PositionedImage hero = new PositionedImage(heroImage, heroBoxX, heroBoxY);
-        hero.draw(graphics);
       }
     }
+  
+    PositionedImage hero = new PositionedImage(heroImage, heroBoxX, heroBoxY);
+    hero.draw(graphics);
+    
   }
   
   // To be a KeyListener the class needs to have these 3 methods in it
@@ -70,24 +71,24 @@ public class Board extends JComponent implements KeyListener {
     
       // When the up or down keys hit, we change the position of our box
       if (e.getKeyCode() == KeyEvent.VK_UP && heroBoxY > 0) {
+        heroImage = "hero-up.png";
         if(map[heroBoxX / 72][(heroBoxY - 72) / 72] == 0) {
           heroBoxY -= 72;
-          heroImage = "hero-up.png";
         }
       } else if (e.getKeyCode() == KeyEvent.VK_DOWN && heroBoxY < 720) {
+        heroImage = "hero-down.png";
         if (map[heroBoxX / 72][(heroBoxY + 72) / 72] == 0) {
           heroBoxY += 72;
-          heroImage = "hero-down.png";
         }
       } else if (e.getKeyCode() == KeyEvent.VK_LEFT && heroBoxX > 0) {
+        heroImage = "hero-left.png";
         if(map[(heroBoxX - 72) / 72][heroBoxY / 72] == 0) {
           heroBoxX -= 72;
-          heroImage = "hero-left.png";
         }
       } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && heroBoxX < 648) {
+        heroImage = "hero-right.png";
         if (map[(heroBoxX + 72) / 72][heroBoxY / 72] == 0) {
           heroBoxX += 72;
-          heroImage = "hero-right.png";
         }
       }
       // and redraw to have a new picture with the new coordinates
