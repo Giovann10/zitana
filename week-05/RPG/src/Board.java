@@ -7,6 +7,7 @@ public class Board extends JComponent implements KeyListener {
   
   int heroBoxX;
   int heroBoxY;
+  int[][] skeletonCoord = new int[3][2];
   String heroImage;
   int[][] map = {
           {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
@@ -51,6 +52,21 @@ public class Board extends JComponent implements KeyListener {
   
     PositionedImage hero = new PositionedImage(heroImage, heroBoxX, heroBoxY);
     hero.draw(graphics);
+  
+    for (int i = 0; i < skeletonCoord.length; i++) {
+      int x = (int)(Math.random()*10);
+      int y = (int)(Math.random()*11);
+  
+      if (map[x][y] == 0) {
+        skeletonCoord[i][0] = x * 72;
+        skeletonCoord[i][1] = y * 72;
+      }
+    }
+  
+    for (int i = 0; i < skeletonCoord.length; i++) {
+      PositionedImage skeleton = new PositionedImage("skeleton.png", skeletonCoord[i][0], skeletonCoord[i][1]);
+      skeleton.draw(graphics);
+    }
     
   }
   
@@ -94,4 +110,5 @@ public class Board extends JComponent implements KeyListener {
       // and redraw to have a new picture with the new coordinates
       repaint();
     }
+    
   }
