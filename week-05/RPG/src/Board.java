@@ -8,7 +8,19 @@ public class Board extends JComponent implements KeyListener {
   int heroBoxX;
   int heroBoxY;
   String heroImage;
-  int[][] map = {{0, 0, 0, 1, 0, 1, 0, 0, 0, 0},{0, 0, 0, 1, 0, 1, 0, 1, 1, 0},{0, 1, 1, 1, 0, 1, 0, 1, 1, 0},{0,0,0,0,0,1,0,0,0,0},{1,1,1,1,0,1,1,1,1,0},{0,1,0,1,0,0,0,0,1,0},{0,1,0,1,0,1,1,0,1,0},{0,0,0,0,0,1,1,0,1,0},{0,1,1,1,0,0,0,0,1,0},{0,0,0,1,0,1,1,0,1,0},{0,1,0,1,0,1,0,0,0,0}};
+  int[][] map = {
+          {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
+          {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
+          {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
+          {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+          {1, 1, 1, 1, 0, 1, 1, 1, 1, 0},
+          {0, 1, 0, 1, 0, 0, 0, 0, 1, 0},
+          {0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
+          {0, 0, 0, 0, 0, 1, 1, 0, 1, 0},
+          {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
+          {0, 0, 0, 1, 0, 1, 1, 0, 1, 0},
+          {0, 1, 0, 1, 0, 1, 0, 0, 0, 0}
+  };
   
   public Board() {
     heroBoxX = 0;
@@ -25,20 +37,20 @@ public class Board extends JComponent implements KeyListener {
     super.paint(graphics);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
-    
-    for (int j = 0; j < map.length; j++) {
-      for (int i = 0; i < map[j].length; i++) {
-        if (map[j][i] == 1) {
-          PositionedImage wall = new PositionedImage("wall.png", i * 72, j * 72);
-          wall.draw(graphics);
-        } else {
+  
+    for (int i = 0; i < map.length; i++) {
+      for (int j = 0; j < map[i].length; j++) {
+        if (map[i][j] == 0) {
           PositionedImage floor = new PositionedImage("floor.png", i * 72, j * 72);
           floor.draw(graphics);
+        } else {
+          PositionedImage floor = new PositionedImage("wall.png", i * 72, j * 72);
+          floor.draw(graphics);
         }
-      }
   
-      PositionedImage hero = new PositionedImage(heroImage, heroBoxX, heroBoxY);
-      hero.draw(graphics);
+        PositionedImage hero = new PositionedImage(heroImage, heroBoxX, heroBoxY);
+        hero.draw(graphics);
+      }
     }
   }
   
@@ -57,24 +69,27 @@ public class Board extends JComponent implements KeyListener {
   @Override
   public void keyReleased(KeyEvent e) {
     
-    int tileRight = map[(heroBoxX + 72) / 72][heroBoxY / 72];
-    int tileLeft = map[(heroBoxX - 72) / 72][heroBoxY / 72];
-    int tileUp = map[heroBoxX / 72][(heroBoxY - 72) / 72];
-    int tileDown = map[heroBoxX / 72][(heroBoxY + 72) / 72];
-    
-    // When the up or down keys hit, we change the position of our box
-      if (e.getKeyCode() == KeyEvent.VK_UP && heroBoxY > 0 && tileUp == 0) {
-        heroBoxY -= 72;
-        heroImage = "hero-up.png";
-      } else if (e.getKeyCode() == KeyEvent.VK_DOWN && heroBoxY < 720 && tileDown == 0) {
-        heroBoxY += 72;
-        heroImage = "hero-down.png";
-      } else if (e.getKeyCode() == KeyEvent.VK_LEFT && heroBoxX > 0 && tileLeft == 0) {
-        heroBoxX -= 72;
-        heroImage = "hero-left.png";
-      } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && heroBoxX < 648 && tileRight == 0) {
-        heroBoxX += 72;
-        heroImage = "hero-right.png";
+      // When the up or down keys hit, we change the position of our box
+      if (e.getKeyCode() == KeyEvent.VK_UP && heroBoxY > 0) {
+        if(map[heroBoxX / 72][(heroBoxY - 72) / 72] == 0) {
+          heroBoxY -= 72;
+          heroImage = "hero-up.png";
+        }
+      } else if (e.getKeyCode() == KeyEvent.VK_DOWN && heroBoxY < 720) {
+        if (map[heroBoxX / 72][(heroBoxY + 72) / 72] == 0) {
+          heroBoxY += 72;
+          heroImage = "hero-down.png";
+        }
+      } else if (e.getKeyCode() == KeyEvent.VK_LEFT && heroBoxX > 0) {
+        if(map[(heroBoxX - 72) / 72][heroBoxY / 72] == 0) {
+          heroBoxX -= 72;
+          heroImage = "hero-left.png";
+        }
+      } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && heroBoxX < 648) {
+        if (map[(heroBoxX + 72) / 72][heroBoxY / 72] == 0) {
+          heroBoxX += 72;
+          heroImage = "hero-right.png";
+        }
       }
       // and redraw to have a new picture with the new coordinates
       repaint();
