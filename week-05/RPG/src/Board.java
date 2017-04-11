@@ -22,18 +22,15 @@ public class Board extends JComponent implements KeyListener {
     super.paint(graphics);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
-    for (int j = 0; j < 10; j++) {
-      for (int i = 0; i < 10; i++) {
-        PositionedImage image = new PositionedImage("floor.png", i * 72, j * 72);
-        image.draw(graphics);
-      }
-    }
   
     int[][] wall = {{0, 0, 0, 1, 0, 1, 0, 0, 0, 0},{0, 0, 0, 1, 0, 1, 0, 1, 1, 0},{0, 1, 1, 1, 0, 1, 0, 1, 1, 0},{0,0,0,0,0,1,0,0,0,0},{1,1,1,1,0,1,1,1,1,0},{0,1,0,1,0,0,0,0,1,0},{0,1,0,1,0,1,1,0,1,0},{0,0,0,0,0,1,1,0,1,0},{0,1,1,1,0,0,0,0,1,0},{0,0,0,1,0,1,1,0,1,0},{0,1,0,1,0,1,0,0,0,0}};
     for (int j = 0; j < wall.length; j++) {
       for (int i = 0; i < wall[j].length; i++) {
         if (wall[j][i] == 1) {
           PositionedImage image = new PositionedImage("wall.png", i * 72, j * 72);
+          image.draw(graphics);
+        } else {
+          PositionedImage image = new PositionedImage("floor.png", i * 72, j * 72);
           image.draw(graphics);
         }
       }
