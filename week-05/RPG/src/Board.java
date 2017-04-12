@@ -7,10 +7,12 @@ public class Board extends JComponent implements KeyListener {
   
   private static int TILE_SIZE = 72;
   private Map map;
-  
+  private Hero hero;
   
   public Board() {
     map = new Map();
+    hero = new Hero(map);
+    map.gameObjects.add(hero);
     // set the size of your draw board
     setPreferredSize(new Dimension(10 * TILE_SIZE, 11 * TILE_SIZE));
     setVisible(true);
@@ -21,6 +23,7 @@ public class Board extends JComponent implements KeyListener {
     super.paint(graphics);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
+    
     for (GameObject gameObject : map.gameObjects) {
       PositionedImage image = new PositionedImage(gameObject.getCostume(), gameObject.getPosX() * TILE_SIZE, gameObject.getPosY()* TILE_SIZE);
       image.draw(graphics);
@@ -45,13 +48,13 @@ public class Board extends JComponent implements KeyListener {
   
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      map.hero.moveUp();
+      hero.moveUp();
     } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      map.hero.moveDown();
+      hero.moveDown();
     } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      map.hero.moveLeft();
+      hero.moveLeft();
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      map.hero.moveRight();
+      hero.moveRight();
     }
       // and redraw to have a new picture with the new coordinates
       repaint();

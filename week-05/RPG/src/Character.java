@@ -6,6 +6,9 @@ public class Character extends GameObject{
   private int level;
   private Map map;
   
+  public void setMap(Map map) {
+    this.map = map;
+  }
   
   Character(int maxHP, int DP, int SP) {
     this.maxHP = maxHP;
@@ -21,25 +24,46 @@ public class Character extends GameObject{
     this.SP = SP;
     this.map = map;
   }
+  Character( Map map) {
+    
+    this.map = map;
+  }
   
   Character() {
   
   }
   
   public void moveUp() {
-    this.setPosY(this.getPosY() - 1);
+    setCostume("hero-up.png");
+    if (getPosY() > 0 && !map.isThereWall(getPosX(),getPosY() - 1)) {
+      this.setPosY(this.getPosY() - 1);
+    }
   }
   
   public void moveDown() {
-    this.setPosY(this.getPosY() + 1);
+    setCostume("hero-down.png");
+    if (getPosY() < 10) {
+      if (!map.isThereWall(getPosX(), getPosY() + 1)) {
+        this.setPosY(this.getPosY() + 1);
+      }
+    }
   }
   
   public void moveLeft() {
-    this.setPosX(this.getPosX() - 1);
+    setCostume("hero-left.png");
+    if (getPosX() > 0) {
+      if (!map.isThereWall(getPosX() - 1, getPosY())) {
+        this.setPosX(this.getPosX() - 1);
+      }
+    }
   }
   
   public void moveRight() {
-    this.setPosX(this.getPosX() + 1);
+    setCostume("hero-right.png");
+    if (getPosX() < 9) {
+      if (!map.isThereWall(getPosX() + 1, getPosY())) {
+        this.setPosX(this.getPosX() + 1);
+      }
+    }
   }
-  
 }
