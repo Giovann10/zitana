@@ -3,8 +3,8 @@ public class Character extends GameObject{
   private int currentHP;
   private int DP;
   private int SP;
-//  private boolean isAlive; metodus legyen
   private int level;
+  private Map map;
   
   
   Character(int maxHP, int DP, int SP) {
@@ -12,6 +12,14 @@ public class Character extends GameObject{
     this.currentHP = maxHP;
     this.DP = DP;
     this.SP = SP;
+  }
+  
+  Character(int maxHP, int DP, int SP, Map map) {
+    this.maxHP = maxHP;
+    this.currentHP = maxHP;
+    this.DP = DP;
+    this.SP = SP;
+    this.map = map;
   }
   
   Character() {

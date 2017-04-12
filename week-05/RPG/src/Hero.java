@@ -3,7 +3,6 @@ public class Hero extends Character {
 //  DP: 2 * d6
 //  SP: 5 + d6
   
-  
   Hero() {
     super(20 + 3 * ((int)((Math.random() * 6)) + 1), 2 * ((int)((Math.random() * 6)) + 1), 5 + ((int)((Math.random() * 6)) + 1));
     this.setPosX(0);
