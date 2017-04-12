@@ -8,11 +8,15 @@ public class Board extends JComponent implements KeyListener {
   private static int TILE_SIZE = 72;
   private Map map;
   private Hero hero;
+  private Skeleton skeleton;
   
   public Board() {
     map = new Map();
     hero = new Hero(map);
     map.gameObjects.add(hero);
+    skeleton = new Skeleton(1,false, map);
+    map.gameObjects.add(skeleton);
+    
     // set the size of your draw board
     setPreferredSize(new Dimension(10 * TILE_SIZE, 11 * TILE_SIZE));
     setVisible(true);

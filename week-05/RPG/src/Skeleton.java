@@ -5,23 +5,25 @@ public class Skeleton extends Character {
   
   boolean hasKey;
   
-  Skeleton(int level, boolean hasKey) {
-    super(2 * level * ((int)((Math.random() * 6)) + 1), level/2 * ((int)((Math.random() * 6)) + 1), level * ((int)((Math.random() * 6)) + 1));
+  Skeleton(int level, boolean hasKey, Map map) {
+    super(2 * level * ((int) ((Math.random() * 6)) + 1), level / 2 * ((int) ((Math.random() * 6)) + 1), level * ((int) ((Math.random() * 6)) + 1));
     this.hasKey = true;
+    this.placeRandomSkeleton(map);
+    setCostume("skeleton.png");
   }
   
-//  int[][] skeletonCoord = new int[3][2];
-//
-//  public void putRandomSkeleton() {
-//    for (int i = 0; i < skeletonCoord.length; i++) {
-//      int x = (int) (Math.random() * 10);
-//      int y = (int) (Math.random() * 11);
-//
-//      if (map[x][y] == 0) {
-//        skeletonCoord[i][0] = x * 72;
-//        skeletonCoord[i][1] = y * 72;
-//      }
-//    }
-//
-//  }
+  public void placeRandomSkeleton(Map map) {
+    int x = (int) (Math.random() * 10);
+    int y = (int) (Math.random() * 11);
+    
+    while (this.getPosX() == 0 && this.getPosY() == 0) {
+      if (!map.isThereWall(x, y)) {
+        setPosX(x);
+        setPosY(y);
+      } else {
+        x = (int) (Math.random() * 10);
+        y = (int) (Math.random() * 11);
+      }
+    }
+  }
 }
