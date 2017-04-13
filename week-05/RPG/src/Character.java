@@ -6,27 +6,12 @@ public class Character extends GameObject{
   private int level;
   private Map map;
   
-  public void setMap(Map map) {
-    this.map = map;
-  }
-  
-  Character(int maxHP, int DP, int SP) {
+  public Character(int maxHP, int DP, int SP) {
     this.maxHP = maxHP;
     this.currentHP = maxHP;
     this.DP = DP;
     this.SP = SP;
-  }
-  
-  Character(int maxHP, int DP, int SP, Map map) {
-    this.maxHP = maxHP;
-    this.currentHP = maxHP;
-    this.DP = DP;
-    this.SP = SP;
-    this.map = map;
-  }
-  Character( Map map) {
-    
-    this.map = map;
+    this.level = 1;
   }
   
   Character() {
@@ -67,18 +52,16 @@ public class Character extends GameObject{
     }
   }
   
-  public void placeRandom(Map map) {
-    int x = (int) (Math.random() * 10);
-    int y = (int) (Math.random() * 10);
-    
-    while (this.getPosX() == 0 && this.getPosY() == 0) {
-      if (!map.isThereWall(x, y)) {
-        setPosX(x);
-        setPosY(y);
-      } else {
-        x = (int) (Math.random() * 10);
-        y = (int) (Math.random() * 10);
-      }
-    }
+  public void setMap(Map map) {
+    this.map = map;
+  }
+  
+  @Override
+  public String toString() {
+    return this.getClass().getSimpleName() +
+            "(level " + level +") " +
+            "HP: " + currentHP + "/" + maxHP +
+            " | DP: " + DP +
+            " | SP: " + SP;
   }
 }

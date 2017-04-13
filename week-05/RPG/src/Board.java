@@ -15,17 +15,21 @@ public class Board extends JComponent implements KeyListener {
     map = new Map();
     hero = new Hero(map);
     map.gameObjects.add(hero);
-    skeleton = new Skeleton(1,false, map);
+    int[] temp = map.getRandomFreeCoordinate();
+    skeleton = new Skeleton(1,false, temp[0], temp[1]);
     map.gameObjects.add(skeleton);
-    skeleton = new Skeleton(1,false, map);
+    temp = map.getRandomFreeCoordinate();
+    skeleton = new Skeleton(1,false,  temp[0], temp[1]);
     map.gameObjects.add(skeleton);
-    skeleton = new Skeleton(1,true, map);
+    temp = map.getRandomFreeCoordinate();
+    skeleton = new Skeleton(1,true,  temp[0], temp[1]);
     map.gameObjects.add(skeleton);
-    boss = new Boss(1, map);
+    temp = map.getRandomFreeCoordinate();
+    boss = new Boss(1, temp[0], temp[1]);
     map.gameObjects.add(boss);
     
     // set the size of your draw board
-    setPreferredSize(new Dimension(10 * TILE_SIZE, 10 * TILE_SIZE));
+    setPreferredSize(new Dimension(1000, 10 * TILE_SIZE));
     setVisible(true);
   }
   
@@ -39,6 +43,8 @@ public class Board extends JComponent implements KeyListener {
       PositionedImage image = new PositionedImage(gameObject.getCostume(), gameObject.getPosX() * TILE_SIZE, gameObject.getPosY()* TILE_SIZE);
       image.draw(graphics);
     }
+    
+    graphics.drawString(hero.toString(), 730,10);
   
   }
   

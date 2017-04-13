@@ -3,13 +3,8 @@ public class GameObject {
   private int posY;
   private String costume;
   
-  GameObject()  {
+  GameObject() {
   
-  }
-  
-  GameObject(int posX, int posY)  {
-    this.posX = posX;
-    this.posY = posY;
   }
   
   GameObject(int posX, int posY, String costume)  {

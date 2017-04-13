@@ -8,9 +8,7 @@ public class Hero extends Character {
     this.setPosX(0);
     this.setPosY(0);
     this.setCostume("hero-down.png");
-    setMap(map);
+    this.setMap(map);
   }
-  
-  
   
 }
