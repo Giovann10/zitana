@@ -42,7 +42,7 @@ public class Character extends GameObject{
   
   public void moveDown() {
     setCostume("hero-down.png");
-    if (getPosY() < 10) {
+    if (getPosY() < 9) {
       if (!map.isThereWall(getPosX(), getPosY() + 1)) {
         this.setPosY(this.getPosY() + 1);
       }
@@ -63,6 +63,21 @@ public class Character extends GameObject{
     if (getPosX() < 9) {
       if (!map.isThereWall(getPosX() + 1, getPosY())) {
         this.setPosX(this.getPosX() + 1);
+      }
+    }
+  }
+  
+  public void placeRandom(Map map) {
+    int x = (int) (Math.random() * 10);
+    int y = (int) (Math.random() * 10);
+    
+    while (this.getPosX() == 0 && this.getPosY() == 0) {
+      if (!map.isThereWall(x, y)) {
+        setPosX(x);
+        setPosY(y);
+      } else {
+        x = (int) (Math.random() * 10);
+        y = (int) (Math.random() * 10);
       }
     }
   }

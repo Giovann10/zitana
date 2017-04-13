@@ -3,9 +3,9 @@ public class Boss extends Character {
   //  DP: x/2 * d6 (+d6/2)
   //  SP: x * d6 (+x)
   
-  Boss(int level) {
-    super(2 * level * ((int)((Math.random() * 6)) + 1) + ((int)((Math.random() * 6)) + 1), level /2 * ((int)((Math.random() * 6)) + 1) + ((int)((Math.random() * 6)) + 1) / 2, level * ((int)((Math.random() * 6)) + 1) + level);
-    
-    
+  Boss(int level, Map map) {
+    super(2 * level * ((int)((Math.random() * 6)) + 1) + ((int)((Math.random() * 6)) + 1), level /2 * ((int)((Math.random() * 6)) + 1) + ((int)((Math.random() * 6)) + 1) / 2, level * ((int)((Math.random() * 6)) + 1) + level, map);
+    this.placeRandom(map);
+    setCostume("boss.png");
   }
 }

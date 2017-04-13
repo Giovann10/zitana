@@ -6,6 +6,4 @@ public class Tile extends GameObject {
     isWall = costume.equals("wall.png");
   }
   
-  
-  
 }
