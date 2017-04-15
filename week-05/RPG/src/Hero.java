@@ -11,4 +11,40 @@ public class Hero extends Character {
     this.setMap(map);
   }
   
+  @Override
+  public void moveUp() {
+    setCostume("hero-up.png");
+    if (getPosY() > 0 && !map.isThereWall(getPosX(),getPosY() - 1)) {
+      this.setPosY(this.getPosY() - 1);
+    }
+  }
+  
+  public void moveDown() {
+    setCostume("hero-down.png");
+    if (getPosY() < 9) {
+      if (!map.isThereWall(getPosX(), getPosY() + 1)) {
+        this.setPosY(this.getPosY() + 1);
+      }
+    }
+  }
+  
+  public void moveLeft() {
+    setCostume("hero-left.png");
+    if (getPosX() > 0) {
+      if (!map.isThereWall(getPosX() - 1, getPosY())) {
+        this.setPosX(this.getPosX() - 1);
+      }
+    }
+  }
+  
+  public void moveRight() {
+    setCostume("hero-right.png");
+    if (getPosX() < 9) {
+      if (!map.isThereWall(getPosX() + 1, getPosY())) {
+        this.setPosX(this.getPosX() + 1);
+      }
+    }
+  }
+  
+  
 }
