@@ -7,6 +7,7 @@ public class Character extends GameObject{
   private int SP;
   private int level;
   public Map map;
+  private boolean isAlive;
   
   public Character(int maxHP, int DP, int SP) {
     this.maxHP = maxHP;
@@ -14,6 +15,7 @@ public class Character extends GameObject{
     this.DP = DP;
     this.SP = SP;
     this.level = 1;
+    this.isAlive = true;
   }
   
   Character() {
@@ -48,6 +50,11 @@ public class Character extends GameObject{
     int SV = this.getSP() + (2 * ((int)((Math.random() * 6)) + 1));
     if (SV > opponent.getDP()) {
       opponent.setCurrentHP(opponent.getCurrentHP() - (SV - opponent.getDP()));
+    }
+    if (opponent.getCurrentHP() > 0){
+      opponent.strike(this);
+    } else {
+      opponent.setAlive(false);
     }
  }
  
@@ -102,7 +109,13 @@ public class Character extends GameObject{
     this.map = map;
   }
   
+  public boolean isAlive() {
+    return isAlive;
+  }
   
+  public void setAlive(boolean alive) {
+    isAlive = alive;
+  }
   
   @Override
   public String toString() {

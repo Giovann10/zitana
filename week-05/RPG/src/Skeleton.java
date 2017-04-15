@@ -1,8 +1,4 @@
 public class Skeleton extends Character {
-  // HP: 2 * x * d6
-  //  DP: x/2 * d6
-  //  SP: x * d6
-  
   boolean hasKey;
   
   Skeleton(int level, boolean hasKey, int posX, int posY, Map map) {
@@ -11,6 +7,7 @@ public class Skeleton extends Character {
     this.setPosY(posY);
     this.hasKey = hasKey;
     this.setMap(map);
+    this.setLevel(level);
     setCostume("skeleton.png");
   }
 

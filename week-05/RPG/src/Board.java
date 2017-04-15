@@ -16,7 +16,7 @@ public class Board extends JComponent implements KeyListener {
     map = new Map();
     hero = new Hero(map);
     map.gameObjects.add(hero);
-    initMonsters(3,map);
+    initMonsters(1,map);
     
     // set the size of your draw board
     setPreferredSize(new Dimension(1000, 10 * TILE_SIZE));
@@ -31,10 +31,16 @@ public class Board extends JComponent implements KeyListener {
       PositionedImage image = new PositionedImage(gameObject.getCostume(), gameObject.getPosX() * TILE_SIZE, gameObject.getPosY()* TILE_SIZE);
       image.draw(graphics);
     }
+    for (Character monster : map.monsters) {
+      PositionedImage image = new PositionedImage(monster.getCostume(), monster.getPosX() * TILE_SIZE, monster.getPosY()* TILE_SIZE);
+      image.draw(graphics);
+    }
+    
     
     graphics.drawString(hero.toString(), 730,50);
-    graphics.drawString(boss.toString(), 730,80);
-  
+    for (int i = 0; i < map.monsters.size(); i++ ) {
+      graphics.drawString(map.monsters.get(i).toString(), 730, 80 + i * 15);
+    }
   }
   
   // To be a KeyListener the class needs to have these 3 methods in it
@@ -65,9 +71,21 @@ public class Board extends JComponent implements KeyListener {
       hero.moveRight();
       moveMonsters(map.monsters);
     } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-        if (hero.getPosX() == boss.getPosX() && hero.getPosY() == boss.getPosY()) {
-          hero.strike(boss);
+      if (map.monsters.size() != 0) {
+        for (Character monster : map.monsters) {
+          if (hero.getPosX() == monster.getPosX() && hero.getPosY() == monster.getPosY()) {
+            hero.strike(monster);
+          }
+          if (!monster.isAlive()) {
+            hero.levelUp();
+          }
+          map.monsters = removeDead(map.monsters);
+          enterNewLevel(hero);
         }
+      } else {
+        initMonsters(boss.getLevel() + 1, map);
+        
+      }
     }
       // and redraw to have a new picture with the new coordinates
       repaint();
@@ -78,19 +96,15 @@ public class Board extends JComponent implements KeyListener {
     int[] temp = map.getRandomFreeCoordinate();
     skeleton = new Skeleton(level, false, temp[0], temp[1], map);
     map.monsters.add(skeleton);
-    map.gameObjects.add(skeleton);
     temp = map.getRandomFreeCoordinate();
     skeleton = new Skeleton(level, false, temp[0], temp[1], map);
     map.monsters.add(skeleton);
-    map.gameObjects.add(skeleton);
     temp = map.getRandomFreeCoordinate();
     skeleton = new Skeleton(level, true, temp[0], temp[1], map);
     map.monsters.add(skeleton);
-    map.gameObjects.add(skeleton);
     temp = map.getRandomFreeCoordinate();
     boss = new Boss(level, temp[0], temp[1], map);
     map.monsters.add(boss);
-    map.gameObjects.add(boss);
   }
   
   public void moveMonsters(ArrayList<Character> monsters) {
@@ -105,6 +119,35 @@ public class Board extends JComponent implements KeyListener {
         monster.moveLeft();
       } else if (randomDirection == 3) {
         monster.moveRight();
+      }
+    }
+  }
+  
+  public ArrayList<Character> removeDead(ArrayList<Character> monsters) {
+    ArrayList<Character> monstersAlive = new ArrayList<>();
+    for (Character monster : monsters) {
+      if (monster.isAlive()) {
+        monstersAlive.add(monster);
+      }
+    }
+    return monstersAlive;
+  }
+  
+  public void enterNewLevel(Character hero) {
+    int restoreHealth = (int) (Math.random() * 10);
+    if (restoreHealth % 2 == 0) {
+      if (hero.getMaxHP() <= hero.getCurrentHP() + (int) (hero.getMaxHP() * 0.1)) {
+        hero.setCurrentHP(hero.getMaxHP());
+      } else {
+        hero.setCurrentHP(hero.getCurrentHP() + (int) (hero.getMaxHP() * 0.1));
+      }
+    } else if (restoreHealth == 9) {
+      hero.setCurrentHP(hero.getMaxHP());
+    } else {
+      if (hero.getMaxHP() <= hero.getCurrentHP() + (int) (hero.getMaxHP() * 0.4)) {
+        hero.setCurrentHP(hero.getMaxHP());
+      } else {
+        hero.setCurrentHP(hero.getCurrentHP() + (int) (hero.getMaxHP() * 0.4));
       }
     }
   }

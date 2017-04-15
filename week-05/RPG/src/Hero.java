@@ -46,5 +46,12 @@ public class Hero extends Character {
     }
   }
   
+  public void levelUp() {
+    this.setMaxHP(this.getMaxHP() + ((int)((Math.random() * 6)) + 1));
+    this.setDP(this.getDP() + ((int)((Math.random() * 6)) + 1));
+    this.setSP(this.getSP() + ((int)((Math.random() * 6)) + 1));
+    this.setLevel(this.getLevel() + 1);
+  }
+  
   
 }
