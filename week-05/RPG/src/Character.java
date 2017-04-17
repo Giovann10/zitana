@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Character extends GameObject{
   private int maxHP;
   private int currentHP;

@@ -1,7 +1,4 @@
 public class Hero extends Character {
-//  HP: 20 + 3 * d6
-//  DP: 2 * d6
-//  SP: 5 + d6
   
   Hero(Map map) {
     super(20 + 3 * ((int)((Math.random() * 6)) + 1), 2 * ((int)((Math.random() * 6)) + 1), 5 + ((int)((Math.random() * 6)) + 1));
@@ -52,6 +49,5 @@ public class Hero extends Character {
     this.setSP(this.getSP() + ((int)((Math.random() * 6)) + 1));
     this.setLevel(this.getLevel() + 1);
   }
-  
   
 }

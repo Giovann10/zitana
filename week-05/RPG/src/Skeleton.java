@@ -1,5 +1,5 @@
 public class Skeleton extends Character {
-  boolean hasKey;
+  private boolean hasKey;
   
   Skeleton(int level, boolean hasKey, int posX, int posY, Map map) {
     super(2 * level * ((int) ((Math.random() * 6)) + 1), level / 2 * ((int) ((Math.random() * 6)) + 1), level * ((int) ((Math.random() * 6)) + 1));
@@ -8,7 +8,7 @@ public class Skeleton extends Character {
     this.hasKey = hasKey;
     this.setMap(map);
     this.setLevel(level);
-    setCostume("skeleton.png");
+    this.setCostume("skeleton.png");
   }
 
 }

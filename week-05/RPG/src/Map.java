@@ -52,6 +52,4 @@ public class Map {
     return coordinates;
   }
   
-  
-  
 }

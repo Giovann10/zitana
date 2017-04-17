@@ -18,7 +18,6 @@ public class Board extends JComponent implements KeyListener {
     map.gameObjects.add(hero);
     initMonsters(1,map);
     
-    // set the size of your draw board
     setPreferredSize(new Dimension(1000, 10 * TILE_SIZE));
     setVisible(true);
   }
@@ -35,7 +34,6 @@ public class Board extends JComponent implements KeyListener {
       PositionedImage image = new PositionedImage(monster.getCostume(), monster.getPosX() * TILE_SIZE, monster.getPosY()* TILE_SIZE);
       image.draw(graphics);
     }
-    
     
     graphics.drawString(hero.toString(), 730,50);
     for (int i = 0; i < map.monsters.size(); i++ ) {
@@ -84,7 +82,6 @@ public class Board extends JComponent implements KeyListener {
         }
       } else {
         initMonsters(boss.getLevel() + 1, map);
-        
       }
     }
       // and redraw to have a new picture with the new coordinates
@@ -92,7 +89,6 @@ public class Board extends JComponent implements KeyListener {
   }
   
   public void initMonsters(int level, Map map) {
-
     int[] temp = map.getRandomFreeCoordinate();
     skeleton = new Skeleton(level, false, temp[0], temp[1], map);
     map.monsters.add(skeleton);
@@ -151,4 +147,5 @@ public class Board extends JComponent implements KeyListener {
       }
     }
   }
+  
 }
