@@ -57,7 +57,7 @@ public class StudentCounter{
         sumAge += Double.valueOf(map.get(i).get("age").toString());
       }
     }
-     
+    
     
     System.out.println(candyStudents);
     System.out.println(sumAge);
