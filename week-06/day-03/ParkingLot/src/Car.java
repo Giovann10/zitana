@@ -15,6 +15,10 @@ public class Car {
     return color;
   }
   
+  public String getTypeAndColor() {
+    return color.toString() + " " + carType.toString();
+  }
+  
   @Override
   public String toString() {
     return "Car{" +

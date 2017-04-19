@@ -12,6 +12,6 @@ public enum CarType {
   }
   
   public static CarType getRandomType() {
-    return values()[(int)(Math.random() * 7)];
+    return values()[(int)(Math.random() * 8)];
   }
 }
