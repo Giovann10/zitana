@@ -8,7 +8,7 @@ public class Main {
     System.out.println(colorMap(parkingLot));
     System.out.println(typeAndColorMap(parkingLot));
     System.out.println("The most common car is the " + getMaxKey(typeAndColorMap(parkingLot)));
-//    System.out.println(sortByValue(typeAndColorMap(parkingLot)));
+    System.out.println(sortByValue(typeAndColorMap(parkingLot)));
   }
   
   public static List<Car> fillParkingLot(int numberOfCars) {
@@ -78,19 +78,19 @@ public class Main {
     return(maxKey);
   }
   
-//  public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ) {
-//    List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>( map.entrySet() );
-//    Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
-//      public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 ) {
-//        return (o1.getValue()).compareTo( o2.getValue() );
-//      }
-//    } );
-//
-//    Map<K, V> result = new LinkedHashMap<K, V>();
-//    for (Map.Entry<K, V> entry : list)
-//    {
-//      result.put( entry.getKey(), entry.getValue() );
-//    }
-//    return result;
-//  }
+  public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ) {
+    List<Map.Entry<K, V>> list = new LinkedList<Map.Entry<K, V>>( map.entrySet() );
+    Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
+      public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 ) {
+        return (o1.getValue()).compareTo( o2.getValue() );
+      }
+    } );
+
+    Map<K, V> result = new LinkedHashMap<K, V>();
+    for (Map.Entry<K, V> entry : list)
+    {
+      result.put( entry.getKey(), entry.getValue() );
+    }
+    return result;
+  }
 }
