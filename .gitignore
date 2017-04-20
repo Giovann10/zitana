@@ -3,3 +3,8 @@ out
 .idea
 *.iml
 *.xml
+*.jar
+gradle
+*.gradle
+*.bat
+
