@@ -4,6 +4,13 @@ out
 *.iml
 *.xml
 *.jar
+
+#Gradle
+.gradletasknamecache
+.gradle/
+build/
+bin/
+
 gradle
 *.gradle
 *.bat
