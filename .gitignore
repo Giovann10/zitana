@@ -6,12 +6,11 @@ out
 *.jar
 
 #Gradle
+.gradle
+/build/
 .gradletasknamecache
-.gradle/
-build/
-bin/
-
-gradle
-*.gradle
+.bin/
+gradle-app.setting
+!gradle-wrapper.jar
 *.bat
-
+*.gradle
