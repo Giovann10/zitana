@@ -1,40 +1,33 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CAB {
   private ArrayList<Integer> numberToFindOut;
-  private String state;
-  private int counter;
+  private int level;
   
-  CAB () {
+  CAB (int level) {
+    this.level = level;
     numberToFindOut = create4RandomDigits();
-    state = "playing";
-    counter = 0;
+  }
+
+  CAB(){
+    this.numberToFindOut = new ArrayList<>();
+    Scanner scanner = new Scanner(System.in);
+    int userinput = scanner.nextInt();
   }
   
   public ArrayList<Integer> getNumberToFindOut() {
     return numberToFindOut;
   }
-  
-  public void setNumberToFindOut(ArrayList<Integer> numberToFindOut) {
-    this.numberToFindOut = numberToFindOut;
+
+  public int getLevel() {
+    return level;
   }
-  
-  public String getState() {
-    return state;
+
+  public void setLevel(int level) {
+    this.level = level;
   }
-  
-  public void setState(String state) {
-    this.state = state;
-  }
-  
-  public int getCounter() {
-    return counter;
-  }
-  
-  public void setCounter(int counter) {
-    this.counter = counter;
-  }
-  
+
   public ArrayList<Integer> create4RandomDigits() {
     ArrayList<Integer> digits = new ArrayList<>();
     for (int i = 0; i < 4; i++)
@@ -48,7 +41,6 @@ public class CAB {
       guessedNumbers.add(0,guess % 10);
       guess = guess / 10;
     }
-    setCounter(counter++);
     return guessedNumbers;
   }
   
@@ -65,7 +57,7 @@ public class CAB {
   }
   
   public static void main(String[] args) {
-    CAB game = new CAB();
+    CAB game = new CAB(4);
 
   }
   

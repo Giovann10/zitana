@@ -1,5 +1,6 @@
-public class Student extends Person {
-  
+import java.util.Comparator;
+
+public class Student extends Person implements Comparable{
   private String previousOrganisation;
   public int skippedDays;
   
@@ -34,5 +35,11 @@ public class Student extends Person {
     super();
     previousOrganisation = "The School of Life";
     skippedDays = 0;
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    Student s = (Student) o;
+    return this.skippedDays - s.skippedDays;
   }
 }

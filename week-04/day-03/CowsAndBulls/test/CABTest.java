@@ -5,33 +5,10 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class CABTest {
-  @Test
-  public void getNumberToFindOut() throws Exception {
-  }
-  
-  @Test
-  public void setNumberToFindOut() throws Exception {
-  }
-  
-  @Test
-  public void getState() throws Exception {
-  }
-  
-  @Test
-  public void setState() throws Exception {
-  }
-  
-  @Test
-  public void getCounter() throws Exception {
-  }
-  
-  @Test
-  public void setCounter() throws Exception {
-  }
   
   @Test
   public void create4RandomDigits() throws Exception {
-    CAB game = new CAB();
+    CAB game = new CAB(4);
     System.out.println(game.create4RandomDigits());
     System.out.println(game.guessNumber(5432));
   }
@@ -42,7 +19,7 @@ public class CABTest {
   
   @Test
   public void cowOrBull() throws Exception {
-    CAB game = new CAB();
+    CAB game = new CAB(4);
     ArrayList<Integer> set1 = new ArrayList<>();
     set1.add(1);
     set1.add(2);
