@@ -20,7 +20,7 @@ public class LotteryFilter {
     parser.accepts("o").withRequiredArg();
 
     OptionSet options = parser.parse(args);
-    
+
     if (options.has("y")) {
       if (options.has("f")) {
         source = options.valueOf("f").toString();
@@ -29,8 +29,9 @@ public class LotteryFilter {
         destination = options.valueOf("o").toString();
       }
       try {
-        writeFile(destination, filterByYear(options.valueOf("y").toString(),readFile(source)));
-      }catch (IOException e) {
+        writeFile(destination, filterByYear(options.valueOf("y").toString(), readFile(source)));
+        System.out.println("copy data from year " + options.has("y") + " from " + source + " to " + destination);
+      } catch (IOException e) {
         System.out.println("File could not be read");
       }
     } else {
@@ -39,7 +40,7 @@ public class LotteryFilter {
 
   }
 
-  public static List<String[]> readFile(String fileName) throws IOException{
+  public static List<String[]> readFile(String fileName) throws IOException {
     CSVReader reader = new CSVReader(new FileReader(fileName), ';');
     return reader.readAll();
   }
