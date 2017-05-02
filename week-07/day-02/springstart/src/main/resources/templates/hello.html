@@ -5,9 +5,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="${hello} + '!'"/>
-<tr th:each="hello : ${hellos}">
-  <td th:text="${hellos}">1</td>
-</tr>
+<h1 th:each="hello : ${hellos}">
+  <span th:text="${hello}">1</span>
+</h1>
 </body>
 </html>
