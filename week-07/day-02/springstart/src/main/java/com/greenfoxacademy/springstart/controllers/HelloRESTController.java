@@ -14,5 +14,5 @@ public class HelloRESTController {
   public Greeting greeting(@RequestParam("name") String name ) {
     return new Greeting(id.incrementAndGet(), "Hello " + name + "!");
   }
-  
+
 }
