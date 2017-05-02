@@ -11,7 +11,7 @@ public class HelloRESTController {
   AtomicLong id = new AtomicLong();
 
   @RequestMapping(value = "/greeting")
-  public Greeting greeting(@RequestParam("name") String name ) {
+  public Greeting greeting(@RequestParam("name") String name) {
     return new Greeting(id.incrementAndGet(), "Hello " + name + "!");
   }
 
