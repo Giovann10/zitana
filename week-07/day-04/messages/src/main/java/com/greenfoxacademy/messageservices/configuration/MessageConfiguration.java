@@ -14,7 +14,7 @@ public class MessageConfiguration {
     return new EmailService();
   }
 
-  @Bean
+//  @Bean
   public MessageService createTweet() {
     return new TwitterService();
   }

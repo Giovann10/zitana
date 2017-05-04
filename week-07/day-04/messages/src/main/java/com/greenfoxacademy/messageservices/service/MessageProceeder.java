@@ -6,8 +6,8 @@ public class MessageProceeder {
   @Autowired
   MessageService messageService;
 
-  public void processMessage(String message, String address) {
-    messageService.send(message,address);
+  public String processMessage(String message, String address) {
+    return messageService.send(message,address);
   }
 
 }
