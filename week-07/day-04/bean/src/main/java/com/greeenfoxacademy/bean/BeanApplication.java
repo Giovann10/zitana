@@ -10,7 +10,7 @@ public class BeanApplication implements CommandLineRunner {
 	@Autowired
 	HelloWorld helloWorld;
   @Autowired
-	RedColor redColor;
+	MyColor redColor;
 
 	public static void main(String[] args) {
 

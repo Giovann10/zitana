@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class ColorConfig {
 
   @Bean
-  public RedColor returnRed() {
+  public MyColor returnRed() {
     return new RedColor();
   }
 
