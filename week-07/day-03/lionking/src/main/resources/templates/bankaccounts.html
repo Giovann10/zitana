@@ -7,14 +7,13 @@
 </head>
 <body>
   <tr th:each="account : ${accounts}">
-  <td th:text="${accountStat.index}"></td>
-  <td th:text="' Name: ' + ${account.name}"></td>
-  <td th:text="' | Balance: ' + ${#numbers.formatDecimal(account.balance, 1, 2, 'POINT')} + ' Zebra '"></td>
-  <td th:text="' | Type: ' + ${account.animalType}"></td>
-  <td th:class="${account.animalType} == 'lion' ? 'King' : ''"></td>
-  <td th:text="${account.name} == 'Scar' ? ' | Bad Guy' : ' | Good Guy'"></td>
+    <td th:text="${accountStat.index}"></td>
+    <td th:text="' Name: ' + ${account.name}"></td>
+    <td th:text="' | Balance: ' + ${#numbers.formatDecimal(account.balance, 1, 2, 'POINT')} + ' Zebra '"></td>
+    <td th:text="' | Type: ' + ${account.animalType}"></td>
+    <td th:class="${account.animalType} == 'lion' ? 'King' : ''"></td>
+    <td th:text="${account.name} == 'Scar' ? ' | Bad Guy' : ' | Good Guy'"></td>
     <br/>
   </tr>
-
 </body>
 </html>
