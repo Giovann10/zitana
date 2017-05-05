@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class FoxConfig {
   @Bean
   public Fox createMrFox() {
-    ArrayList<String> tricks = new ArrayList<>(Arrays.asList("write HTML", "code in java"));
+    List<Trick> tricks = new ArrayList<>(Arrays.asList(trick.values(), "code in java"));
     return new Fox("Mr. Fox", tricks, "pizza", "lemonade");
   }
 
@@ -19,5 +19,9 @@ public class FoxConfig {
     return new Fox("Mr. Green", tricks, "salad", "water");
   }
 
+  public Fox createZombie() {
+    ArrayList<String> tricks = new ArrayList<>(Arrays.asList("kill someone", "tell a joke"));
+    return new Fox("Zombie Queen", tricks, "brains", "blood");
+  }
 
 }

@@ -8,19 +8,19 @@ import lombok.Setter;
 @Setter
 public class Fox {
   String name;
-  ArrayList<String> tricks;
+  ArrayList<Trick> tricks;
   String food;
   String drink;
 
 
-  public Fox(String name, ArrayList<String> tricks, String food, String drink) {
+  public Fox(String name, ArrayList<Trick> tricks, String food, String drink) {
     this.name = name;
     this.tricks = tricks;
     this.food = food;
     this.drink = drink;
   }
 
-  public void learnTricks(String trick) {
+  public void learnTricks(Trick trick) {
     this.tricks.add(trick);
   }
 }

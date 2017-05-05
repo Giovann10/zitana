@@ -22,4 +22,9 @@ public class MainController {
     return "store";
   }
 
+  @RequestMapping("/trickCenter")
+  public String displayTrickCenter(Model model) {
+    return "tricks";
+  }
+
 }
