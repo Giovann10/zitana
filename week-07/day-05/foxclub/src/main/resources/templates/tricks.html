@@ -9,14 +9,16 @@
 <ul>
   <li><a href="/">Information</a></li>
   <li><a href="/nutritionStore">Nutrition Store</a></li>
-  <li><a href="/trickCenter">Nutrition Store</a></li>
+  <li><a href="/trickCenter">Trick Center</a></li>
 </ul>
-<form action="#" th:action="@{/nutritionStore}" th:object="${fox}" method="post">
-  <p>
-    <span>Food: <input type="text"/></span>
-    <span>Drink: <input type="text"/></span>
-    <button type="submit" value="Change" >Change</button>
-  </p>
+<form th:action="@{/learnTrick}" th:object="${fox}" method="post">
+  <span>Tricks</span>
+  <select name="trick">
+    <option th:each="trick : ${tricks}"
+            th:value="${trick.getId()}"
+            th:text="${trick.getDescription()}"/>
+  </select>
+  <button type="submit">Learn</button>
 </form>
 </body>
 </html>
