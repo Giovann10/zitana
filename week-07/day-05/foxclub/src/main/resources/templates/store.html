@@ -16,7 +16,7 @@
   <select name="food">
       <option th:each="food : ${food}"
               th:value="${food.getId()}"
-              th:text="${food.getDescription()}"/>
+              th:text="${food.getDescription()}"> <option/>
     </select>
     <span>Drink</span>
     <select name="drink">

@@ -7,6 +7,7 @@ import com.greenfoxacademy.foxclub.model.Trick;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,7 +33,7 @@ public class MainController {
   @RequestMapping("/trickCenter")
   public String displayTrickCenter(Model model) {
     model.addAttribute("fox", fox);
-    model.addAttribute("tricks", Trick.values());
+    model.addAttribute("tricks", Trick.trickList);
     return "tricks";
   }
 
@@ -44,11 +45,17 @@ public class MainController {
     return "index";
   }
 
-  @RequestMapping("/learnTrick")
+  @GetMapping("/learnTrick")
   public String addTrick(Model model, @RequestParam("trick") int trickId) {
     fox.learnTricks(Trick.getById(trickId));
     model.addAttribute("fox", fox);
     return "index";
   }
+
+//  @RequestMapping("/reset")
+//  public String addTrick(Model model) {
+//    model.addAttribute("fox", fox);
+//    return "index";
+//  }
 
 }
