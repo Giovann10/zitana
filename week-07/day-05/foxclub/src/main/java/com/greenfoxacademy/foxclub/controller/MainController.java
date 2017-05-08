@@ -36,19 +36,4 @@ public class MainController {
     return "tricks";
   }
 
-  @RequestMapping("/changeNutrition")
-  public String changeDiet(Model model, @RequestParam(value ="food") int foodId, @RequestParam(value = "drink") int drinkId) {
-    fox.setFood(Food.getById(foodId));
-    fox.setDrink(Drink.getById(drinkId));
-    model.addAttribute("fox", fox);
-    return "redirect:/";
-  }
-
-  @RequestMapping("/learnTrick")
-  public String addTrick(Model model, @RequestParam("trick") int trickId) {
-    fox.learnTricks(Trick.getById(trickId));
-    model.addAttribute("fox", fox);
-    return "redirect:/";
-  }
-
 }
