@@ -42,20 +42,14 @@ public class MainController {
     fox.setFood(Food.getById(foodId));
     fox.setDrink(Drink.getById(drinkId));
     model.addAttribute("fox", fox);
-    return "index";
+    return "redirect:/";
   }
 
-  @GetMapping("/learnTrick")
+  @RequestMapping("/learnTrick")
   public String addTrick(Model model, @RequestParam("trick") int trickId) {
     fox.learnTricks(Trick.getById(trickId));
     model.addAttribute("fox", fox);
-    return "index";
+    return "redirect:/";
   }
-
-//  @RequestMapping("/reset")
-//  public String addTrick(Model model) {
-//    model.addAttribute("fox", fox);
-//    return "index";
-//  }
 
 }

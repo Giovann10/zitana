@@ -12,7 +12,6 @@ public class Fox {
   Food food;
   Drink drink;
 
-
   public Fox(String name, Food food, Drink drink) {
     this.name = name;
     this.food = food;
