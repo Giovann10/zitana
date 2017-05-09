@@ -17,8 +17,11 @@ public class Todo {
   @GeneratedValue(strategy= GenerationType.AUTO)
   private int id;
 
+  @Column(name = "title")
   private String title;
+
   private boolean isUrgent = false;
+
   private boolean isDone = false;
 
   public Todo() {
@@ -26,6 +29,12 @@ public class Todo {
 
   public Todo(String title) {
     this.title = title;
+  }
+
+  public Todo(String title, boolean isDone, boolean isUrgent) {
+    this.title = title;
+    this.isDone = isDone;
+    this.isUrgent = isUrgent;
   }
 
   @Override
