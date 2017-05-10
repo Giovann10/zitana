@@ -20,8 +20,10 @@ public class Todo {
   @Column(name = "title")
   private String title;
 
+  @Column(columnDefinition = "tinyint(1) default 0")
   private boolean isUrgent = false;
 
+  @Column(columnDefinition = "tinyint(1) default 0")
   private boolean isDone = false;
 
   public Todo() {
