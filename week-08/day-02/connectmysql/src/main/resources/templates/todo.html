@@ -2,24 +2,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Todo CRUD App</title>
+  <link href="https://fonts.googleapis.com/css?family=BioRhyme" rel="stylesheet"/>
   <link rel="stylesheet" th:href="@{/style.css}" />
   <meta charset="utf-8" />
 </head>
 <body>
-<h1>Todos for today</h1>
+<h1>Todos for mentors</h1>
+<p><a href = "/todo/?isActive=true">List active todos</a></p>
 <table>
   <tr>
     <th>ID</th>
     <th>ACTION</th>
     <th>DONE</th>
-    <th>URGENT</th>
+    <!--<th>URGENT</th>-->
   </tr>
 <tr th:each="todo : ${todos}">
   <td th:text="${todo.getId()} "></td>
   <td th:text="${todo.getTitle()} "></td>
   <td th:text="${todo.isDone()} "></td>
-  <td th:text="${todo.isUrgent()} "></td>
+  <!--<td th:text="${todo.isUrgent()} "></td>-->
+  <td>
+    <form method="post" th:action="@{/todo/delete?index=} + ${todo.id}">
+      <input class="delete" type="submit" value="delete"/>
+    </form>
+  </td>
+  <td>
+    <form method="post" th:action="@{/todo/complete?index=} + ${todo.id}">
+      <input class="done" type="submit" value="done"/>
+    </form>
+  </td>
 </tr>
 </table>
+<form method="post" action="/todo/add">
+  Add new todo:
+  <input type="text" name="todo"/>
+  <button type="submit" value="add">Add</button>
+</form>
 </body>
 </html>

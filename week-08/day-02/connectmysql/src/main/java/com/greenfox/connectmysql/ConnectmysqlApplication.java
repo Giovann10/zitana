@@ -19,7 +19,11 @@ public class ConnectmysqlApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		todoRepo.save(new Todo("I have to master Spring Boot", false, true));
-    todoRepo.save(new Todo("I have to master Spring Boot", true, true));
+    todoRepo.save(new Todo("Torture students", false, true));
+    todoRepo.save(new Todo("Explain some stuff", false, true));
+    todoRepo.save(new Todo("Be unavailable/unapproachable", false, true));
+    todoRepo.save(new Todo("More code reviews by mentors please", false, true));
+    todoRepo.save(new Todo("Be more sympathetic about our suffering", false, false));
+    todoRepo.save(new Todo("Hire one more mentor", false, true));
   }
 }
