@@ -11,14 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DoUntilController {
 
   @RequestMapping(value = "/dountil/{what}", method = RequestMethod.POST)
-  public Object dountil(@PathVariable(name = "what") String what, @RequestBody() DoUntil dountil) {
-    if (what.equals("sum")) {
-      return new Sum(dountil.getUntil());
-    } else if(what.equals("factor")) {
-      return new Factorial(dountil.getUntil());
-    } else {
-      return null;
-    }
+  public Result dountil(@PathVariable(name = "what") String what, @RequestBody() DoUntil dountil) {
+    return new Result(dountil.getUntil(), what);
   }
 
   @ExceptionHandler(Exception.class)
