@@ -12,9 +12,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Todo {
+
   @Id
   @Column(name = "ID")
-  @GeneratedValue(strategy= GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
   @Column(name = "title")

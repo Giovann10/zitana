@@ -8,22 +8,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConnectmysqlApplication implements CommandLineRunner{
+public class ConnectmysqlApplication implements CommandLineRunner {
 
-	@Autowired
+  @Autowired
   TodoRepository todoRepo;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConnectmysqlApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(ConnectmysqlApplication.class, args);
+  }
 
-	@Override
-	public void run(String... args) throws Exception {
-    todoRepo.save(new Todo("Torture students", false, true));
+  @Override
+  public void run(String... args) throws Exception {
+    todoRepo.save(new Todo("Torture students (just a little bit)", false, false));
     todoRepo.save(new Todo("Explain some stuff", false, true));
-    todoRepo.save(new Todo("Be unavailable/unapproachable", false, true));
-    todoRepo.save(new Todo("More code reviews by mentors please", false, true));
-    todoRepo.save(new Todo("Be more sympathetic about our suffering", false, false));
-    todoRepo.save(new Todo("Hire one more mentor", false, true));
+    todoRepo.save(new Todo("Be kind amd sympathetic", false, false));
+    todoRepo.save(new Todo("Do more code reviews", false, true));
+    todoRepo.save(new Todo("Stay awesome", false, false));
   }
 }
