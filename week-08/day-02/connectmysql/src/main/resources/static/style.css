@@ -4,6 +4,11 @@ body {
   padding-left: 20px;
   font-family: 'BioRhyme', serif;
 }
+
+a {
+  color: deepskyblue;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -45,8 +50,4 @@ td, th {
   position: relative;
   display: inline-block;
   background-color: #F1C40F;
-}
-
-a {
-  color: deepskyblue;
 }
