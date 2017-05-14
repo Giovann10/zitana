@@ -36,14 +36,14 @@ public class TodoController {
   }
 
   @RequestMapping(value = {"/delete"})
-  public String delete(@RequestParam("index") int index) {
-    todoRepository.delete(new Long(index));
+  public String delete(@RequestParam("id") int id) {
+    todoRepository.delete(new Long(id));
     return "redirect:/todo/";
   }
 
   @RequestMapping(value = {"/complete"})
-  public String complete(@RequestParam("index") long index) {
-    Todo todo = todoRepository.findOne(index);
+  public String complete(@RequestParam("id") int id) {
+    Todo todo = todoRepository.findOne(new Long(id));
     todo.setDone(true);
     todoRepository.save(todo);
     return "redirect:/todo/";

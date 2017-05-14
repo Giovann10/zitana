@@ -22,13 +22,13 @@
   <td th:text="${todo.isDone()} "></td>
   <!--<td th:text="${todo.isUrgent()} "></td>-->
   <td>
-    <form method="post" th:action="@{/todo/delete?index=} + ${todo.id}">
-      <input class="delete" type="submit" value="delete"/>
+    <form method="post" th:action="@{/todo/delete}">
+      <button class="delete" type="submit" name = "id" th:value="${todo.id}">delete</button>
     </form>
   </td>
   <td>
-    <form method="post" th:action="@{/todo/complete?index=} + ${todo.id}">
-      <input class="done" type="submit" value="done"/>
+    <form method="post" th:action="@{/todo/complete}">
+      <button class="done" type="submit" name="id" th:value="${todo.id}">done</button>
     </form>
   </td>
 </tr>
@@ -36,7 +36,7 @@
 <form method="post" action="/todo/add">
   Add new todo:
   <input type="text" name="todo"/>
-  <button type="submit" value="add">Add</button>
+  <button class="add" type="submit" value="add">add</button>
 </form>
 </body>
 </html>
