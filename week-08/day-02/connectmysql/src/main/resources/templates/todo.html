@@ -14,13 +14,15 @@
     <th>ID</th>
     <th>ACTION</th>
     <th>DONE</th>
-    <!--<th>URGENT</th>-->
+    <th>URGENT</th>
   </tr>
 <tr th:each="todo : ${todos}">
   <td th:text="${todo.getId()} "></td>
   <td th:text="${todo.getTitle()} "></td>
   <td th:text="${todo.isDone()} "></td>
-  <!--<td th:text="${todo.isUrgent()} "></td>-->
+  <td>
+    <input type="checkbox" name="active" th:checked="${todo.isUrgent()}"/>
+  </td>
   <td>
     <form method="post" th:action="@{/todo/delete}">
       <button class="delete" type="submit" name = "id" th:value="${todo.id}">delete</button>
@@ -28,7 +30,7 @@
   </td>
   <td>
     <form method="post" th:action="@{/todo/complete}">
-      <button class="done" type="submit" name="id" th:value="${todo.id}">done</button>
+      <button class="done" type="submit" name="id" th:value="${todo.id}" th:text="done"></button>
     </form>
   </td>
 </tr>

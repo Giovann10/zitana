@@ -45,7 +45,11 @@ public class TodoController {
   @RequestMapping(value = {"/complete"})
   public String complete(@RequestParam("id") int id) {
     Todo todo = todoRepository.findOne(new Long(id));
-    todo.setDone(true);
+    if (todo.isDone()) {
+      todo.setDone(false);
+    } else {
+      todo.setDone(true);
+    }
     todoRepository.save(todo);
     return "redirect:/todo/";
   }

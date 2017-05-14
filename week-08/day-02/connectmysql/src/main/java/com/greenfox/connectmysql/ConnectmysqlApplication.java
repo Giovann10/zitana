@@ -21,7 +21,7 @@ public class ConnectmysqlApplication implements CommandLineRunner {
   public void run(String... args) throws Exception {
     todoRepo.save(new Todo("Torture students (just a little bit)", false, false));
     todoRepo.save(new Todo("Explain some stuff", false, true));
-    todoRepo.save(new Todo("Be kind amd sympathetic", false, false));
+    todoRepo.save(new Todo("Be kind and sympathetic", false, false));
     todoRepo.save(new Todo("Do more code reviews", false, true));
     todoRepo.save(new Todo("Stay awesome", false, false));
   }
