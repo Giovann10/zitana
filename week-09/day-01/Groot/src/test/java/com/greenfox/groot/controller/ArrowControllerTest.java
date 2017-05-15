@@ -55,7 +55,7 @@ public class ArrowControllerTest {
   @Test
   public void errorSameAsExpected() throws Exception {
     mockMvc.perform(get("/yondu"))
-        .andExpect(jsonPath("error").value("I am Groot"));
+        .andExpect(jsonPath("error").value("Please provide distance and time"));
   }
 
 }
