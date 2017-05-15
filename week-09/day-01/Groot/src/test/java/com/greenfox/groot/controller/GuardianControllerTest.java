@@ -42,7 +42,7 @@ public class GuardianControllerTest {
   public void responseSameAsExpected() throws Exception {
     mockMvc.perform(get("/groot?message=hello"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.received").value("somemessage"))
+        .andExpect(jsonPath("$.received").value("hello"))
         .andExpect(jsonPath("$.translated").value("I am Groot"));
   }
 

@@ -1,7 +1,7 @@
 package com.greenfox.groot.controller;
 
 import com.greenfox.groot.model.Error;
-import com.greenfox.groot.model.Guardian;
+import com.greenfox.groot.model.Groot;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class GuardianController {
 
   @RequestMapping(value = "/groot",  method = RequestMethod.GET)
-  public Guardian groot(@RequestParam("message") String somemessage) {
-    Guardian groot = new Guardian(somemessage);
+  public Groot groot(@RequestParam("message") String somemessage) {
+    Groot groot = new Groot(somemessage);
     return groot;
   }
 

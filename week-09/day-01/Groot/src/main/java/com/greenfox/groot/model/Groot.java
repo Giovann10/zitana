@@ -1,6 +1,6 @@
 package com.greenfox.groot.model;
 
-public class Guardian {
+public class Groot {
   private String received;
   private String translated;
 
@@ -20,7 +20,7 @@ public class Guardian {
     this.translated = translated;
   }
 
-  public Guardian(String received) {
+  public Groot(String received) {
     this.received = received;
     this.translated = "I am Groot";
   }
