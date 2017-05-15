@@ -49,7 +49,7 @@ public class GuardianControllerTest {
   @Test
   public void withoutParamStatusNotOk() throws Exception {
     mockMvc.perform(get("/groot"))
-        .andExpect(status().isOk());
+        .andExpect(status().isBadRequest());
   }
 
   @Test

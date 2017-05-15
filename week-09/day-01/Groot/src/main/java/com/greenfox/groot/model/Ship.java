@@ -1,5 +1,6 @@
 package com.greenfox.groot.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -7,6 +8,7 @@ public class Ship {
   private int caliber25;
   private int caliber30;
   private int caliber50;
+  @JsonProperty("shipstatus")
   private String shipStatus;
   private boolean ready;
 
@@ -59,8 +61,8 @@ public class Ship {
     return shipStatus;
   }
 
-  private double getPercentage() {
-    return (caliber25 + caliber30 + caliber50) / 12500. * 100;
+  private int getPercentage() {
+    return (int)((caliber25 + caliber30 + caliber50) / 12500. * 100);
   }
 
   public void setShipStatus() {

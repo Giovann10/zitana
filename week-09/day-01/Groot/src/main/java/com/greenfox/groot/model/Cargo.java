@@ -11,8 +11,6 @@ public class Cargo {
   public Cargo(String received, int amount) {
     this.received = received;
     this.amount = amount;
-    this.shipstatus = shipstatus;
-    this.ready = ready;
   }
 
   public String getReceived() {

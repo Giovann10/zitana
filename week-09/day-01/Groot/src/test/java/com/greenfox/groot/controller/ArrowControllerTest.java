@@ -49,7 +49,7 @@ public class ArrowControllerTest {
   @Test
   public void withoutParamStatusNotOk() throws Exception {
     mockMvc.perform(get("/yondu"))
-        .andExpect(status().isOk());
+        .andExpect(status().isBadRequest());
   }
 
   @Test
