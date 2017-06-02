@@ -44,10 +44,13 @@ public class MainRestController {
   }
 
   @RequestMapping(value = "/meal" , method = RequestMethod.DELETE)
-  public List<Meal> deleteMeal(@RequestBody long id) {
-    mealRepository.delete(id);
-//    if (mealRepository.findAllByOrderById().contains(mealRepository.findOne(id)))
-      return mealRepository.findAllByOrderById();
+  public Response deleteMeal(@RequestBody Meal meal) {
+    mealRepository.delete(meal.getId());
+    if (mealRepository.findAllByOrderById().contains(mealRepository.findOne(meal.getId()))) {
+      return new Response("bad");
+    } else {
+      return new Response("ok");
+    }
   }
 
 }
