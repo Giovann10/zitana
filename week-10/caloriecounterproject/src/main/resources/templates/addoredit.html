@@ -18,7 +18,7 @@
       </tr>
 
       <tr th:each="meal : ${meals}">
-        <form th:action="@{/edit}" th:method="POST">
+        <form th:action="@{/edit}" th:method="PUT">
         <td><input th:type="hidden" th:value="${meal.id}" name="id"> </input></td>
         <td><input th:type="date" th:value="${meal.date}" th:name="date"> </input></td>
           <td>

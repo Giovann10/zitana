@@ -36,7 +36,7 @@ public class MainController {
   }
 
   @RequestMapping("/edit")
-  public String edit(Model model,
+  public String edit(
       @RequestParam(name = "id") long id,
       @RequestParam(name = "date") String date,
       @RequestParam(name = "type") String type,
