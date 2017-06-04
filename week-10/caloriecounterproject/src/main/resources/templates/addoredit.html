@@ -20,7 +20,7 @@
       <tr th:each="meal : ${meals}">
         <form th:action="@{/edit}" th:method="PUT">
         <td><input th:type="hidden" th:value="${meal.id}" name="id"> </input></td>
-        <td><input th:type="date" th:value="${meal.date}" th:name="date"> </input></td>
+        <td><input th:type="date" th:value="${meal.date}" th:name="date" required="required"> </input></td>
           <td>
             <select th:name="type">
               <option th:each="type : ${types}"
@@ -31,7 +31,7 @@
             </select>
           </td>
         <td><input th:type="text" th:value="${meal.description}" th:name="description"> </input> </td>
-        <td><input th:type="number" th:value="${meal.calories}" th:name="calories"> </input> </td>
+        <td><input th:type="number" th:value="${meal.calories}" th:name="calories" required="required"> </input> </td>
         <td><button type="submit" value="submit">Edit</button> </td>
         </form>
         <td>
@@ -44,7 +44,7 @@
       <tr>
         <form th:action="@{/add}" th:method="POST">
           <td><input th:type="hidden" th:name="id"> </input></td>
-          <td><input th:type="date" th:name="date"> </input></td>
+          <td><input th:type="date" th:name="date" required="required"> </input></td>
           <td>
             <select th:name="type">
               <option th:each="type : ${types}"
@@ -54,7 +54,7 @@
             </select>
           </td>
           <td><input th:type="text" th:name="description"> </input> </td>
-          <td><input th:type="number" th:name="calories"> </input> </td>
+          <td><input th:type="number" th:name="calories" required="required"> </input> </td>
           <td><button type="submit" value="Submit">Add</button> </td>
         </form>
         <td><a th:href="@{/}">Cancel</a></td>
