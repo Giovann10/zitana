@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DoUntilController {
 
   @RequestMapping(value = "/dountil/{what}", method = RequestMethod.POST)
-  public Result dountil(@PathVariable(name = "what") String what, @RequestBody() DoUntil dountil) {
+  public Result dountil(@PathVariable(name = "what") String what, @RequestBody DoUntil dountil) {
     return new Result(dountil.getUntil(), what);
   }
 

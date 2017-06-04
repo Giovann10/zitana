@@ -19,7 +19,7 @@ public class GreeterController {
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public Error greeterError(MissingServletRequestParameterException ex) {
-    Error error = new Error("Please provide a " + ex.getParameterName());
+    Error error = new Error("Please provide a " + ex.getParameterName() + "!");
     return error;
   }
 }

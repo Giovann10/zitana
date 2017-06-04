@@ -1,19 +1,17 @@
 package com.greenfoxacademy.workshop.arrayhandler;
 
-import java.util.List;
-
 public class ArrayResult {
-  private List<Integer> result;
+  private int[] result;
 
-  public ArrayResult(List<Integer> result) {
+  public ArrayResult(int[] result) {
     this.result = result;
   }
 
-  public List<Integer> getResult() {
+  public int[] getResult() {
     return result;
   }
 
-  public void setResult(List<Integer> result) {
+  public void setResult(int[] result) {
     this.result = result;
   }
 }
