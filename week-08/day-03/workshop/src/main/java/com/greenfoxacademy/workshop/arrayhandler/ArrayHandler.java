@@ -3,6 +3,7 @@ package com.greenfoxacademy.workshop.arrayhandler;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @Service
 public class ArrayHandler {
@@ -26,7 +27,8 @@ public class ArrayHandler {
       }
       return new ArrayResult(resultArray);
     } else {
-      return new IntResult(-1);
+      return new Error("Oooops, something went wrong!");
     }
   }
+
 }
