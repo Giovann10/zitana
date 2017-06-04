@@ -1,11 +1,15 @@
 package com.greenfox.groot.controller;
 
+import com.greenfox.groot.model.Error;
 import com.greenfox.groot.model.Food;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,34 +24,44 @@ public class CalorieController {
   }
 
   @RequestMapping(value = "/add" , method = RequestMethod.POST)
-  public List<Food> add(@RequestParam("name") String name,
+  public Food add(@RequestParam("name") String name,
       @RequestParam("amount") int amount,
       @RequestParam("calories") int calories) {
-    foodList.add(new Food(name, amount, calories));
-    return foodList;
+    Food food = new Food(name, amount, calories);
+    foodList.add(food);
+    return food;
   }
 
   @RequestMapping(value = "/delete" , method = RequestMethod.DELETE)
-  public List<Food> delete(@RequestParam("name") String name,
-      @RequestParam("amount") int amount,
-      @RequestParam("calories") int calories) {
+  public Food delete(@RequestParam("name") String name) {
+    Food food = new Food();
     for (int i = 0; i < foodList.size(); i++) {
       if (foodList.get(i).getName().equals(name)) {
+        food = foodList.get(i);
         foodList.remove(foodList.get(i));
       }
     }
-    return foodList;
+    return food;
   }
 
   @RequestMapping(value = "/change" , method = RequestMethod.PUT)
-  public List<Food> changeAmount(@RequestParam("name") String name,
+  public Food changeAmount(@RequestParam("name") String name,
       @RequestParam("change") int changeTo) {
+    Food food = new Food();
     for (int i = 0; i < foodList.size(); i++) {
       if (foodList.get(i).getName().equals(name)) {
-        foodList.get(i).setAmount(changeTo);
+        food = foodList.get(i);
+        food.setAmount(changeTo);
       }
     }
-    return foodList;
+    return food;
+  }
+
+  @ExceptionHandler(Exception.class)
+  @ResponseStatus(code= HttpStatus.I_AM_A_TEAPOT)
+  public Error error() {
+    Error error = new Error("I am Groot");
+    return error;
   }
 
 }
