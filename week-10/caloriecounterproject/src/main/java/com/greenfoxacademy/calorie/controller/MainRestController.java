@@ -5,10 +5,16 @@ import com.greenfoxacademy.calorie.model.Response;
 import com.greenfoxacademy.calorie.model.Statistics;
 import com.greenfoxacademy.calorie.repository.MealRepository;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,7 +34,7 @@ public class MainRestController {
   }
 
   @RequestMapping(value = "/meal", method = RequestMethod.POST)
-  public Meal postMeal(@RequestBody Meal meal) {
+    public Meal postMeal(@Valid @RequestBody Meal meal) {
     mealRepository.save(meal);
     return meal;
   }
@@ -41,7 +47,7 @@ public class MainRestController {
       mealRepository.save(myMeal);
       return new Response("ok");
     } catch (Exception ex) {
-      System.out.println(ex.getMessage());
+      ex.printStackTrace();
       return new Response("bad");
     }
   }
@@ -56,6 +62,17 @@ public class MainRestController {
       System.out.println("No meal with this ID");
     }
     return new Response(status);
+  }
+
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  @ResponseStatus(code = HttpStatus.I_AM_A_TEAPOT)
+  public Error MissingBodyParamter(MethodArgumentNotValidException e) {
+    String temp = "Missing field(s): ";
+    List<FieldError> errors = e.getBindingResult().getFieldErrors();
+    for (FieldError error : errors) {
+      temp = temp.concat(error.getField() + ", ");
+    }
+    return new Error(temp);
   }
 
 }

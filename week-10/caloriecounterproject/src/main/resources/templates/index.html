@@ -3,6 +3,7 @@
 <head>
   <title>Calorie Counter</title>
   <link rel="stylesheet" th:href="@{/style.css}" />
+  <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
   <meta charset="utf-8" />
 </head>
 <body>
@@ -11,20 +12,27 @@
   <p>Total calories: <span th:text="${statistics.calories}"></span></p>
   <a href="/addoredit">Add new meal</a>
 
-    <table>
-      <tr>
-        <th>DATE</th>
-        <th>TYPE</th>
-        <th>DESCRIPTION</th>
-        <th>CALORIES</th>
-      </tr>
-      <tr th:each="meal : ${meals}">
-        <td th:text="${meal.date}"></td>
-        <td th:text="${meal.type}"></td>
-        <td th:text="${meal.description}"></td>
-        <td th:text="${meal.calories}"></td>
-      </tr>
+  <div class="col-lg-6" >
+    <table class="table">
+      <thead>
+        <tr>
+          <th>DATE</th>
+          <th>TYPE</th>
+          <th>DESCRIPTION</th>
+          <th>CALORIES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="meal : ${meals}">
+          <td th:text="${meal.date}"></td>
+          <td th:text="${meal.type}"></td>
+          <td th:text="${meal.description}"></td>
+          <td th:text="${meal.calories}"></td>
+        </tr>
+      </tbody>
     </table>
-
+  </div>
 </body>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 </html>

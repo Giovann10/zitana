@@ -61,6 +61,14 @@ public class Meal {
     this.calories = meal.calories;
   }
 
-
-
+  @Override
+  public String toString() {
+    return "Meal{" +
+        "id=" + id +
+        ", date='" + date + '\'' +
+        ", type='" + type + '\'' +
+        ", description='" + description + '\'' +
+        ", calories=" + calories +
+        '}';
+  }
 }

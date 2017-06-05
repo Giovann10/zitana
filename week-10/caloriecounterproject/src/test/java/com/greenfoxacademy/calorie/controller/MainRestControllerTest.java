@@ -40,12 +40,33 @@ public class MainRestControllerTest {
 
   private MockMvc mockMvc;
 
+  private ObjectMapper mapper;
+
   @Autowired
   private WebApplicationContext webApplicationContext;
+
+  @Autowired
+  private MealRepository mealRepository;
 
   @Before
   public void setup() throws Exception {
     this.mockMvc = webAppContextSetup(webApplicationContext).build();
+    this.mapper = new ObjectMapper();
+
+    mealRepository.save(new Meal(1, "2017-06-05", "Breakfast", "bacon", 200));
+    mealRepository.save(new Meal(2, "2017-06-05","Breakfast", "eggs", 150));
+    mealRepository.save(new Meal(3, "2017-06-05","Lunch", "pasta", 650));
+    mealRepository.save(new Meal(4, "2017-06-05","Midnight Snack", "beer", 200));
+  }
+
+  @Test
+  public void getStats_4_1200() throws Exception {
+    mockMvc.perform(get("/getstats")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(contentType))
+        .andExpect(jsonPath("$.numberOfMeals", is(4)))
+        .andExpect(jsonPath("$.calories", is(1200)));
   }
 
   @Test
@@ -57,23 +78,13 @@ public class MainRestControllerTest {
         .andExpect(jsonPath("$[0].type", is("Breakfast")))
         .andExpect(jsonPath("$[0].description", is("bacon")))
         .andExpect(jsonPath("$[2].calories", is(650)))
-        .andExpect(jsonPath("$[3].type", is("Midnight Snack")));
-//        .andExpect(jsonPath("$[3].date", is("2017-06-05")));
-  }
-  @Test
-  public void getStats_4_1200() throws Exception {
-  mockMvc.perform(get("/getstats")
-        .contentType(MediaType.APPLICATION_JSON))
-      .andExpect(status().isOk())
-      .andExpect(content().contentType(contentType))
-      .andExpect(jsonPath("$.numberOfMeals", is(4)))
-      .andExpect(jsonPath("$.calories", is(1200)));
+        .andExpect(jsonPath("$[3].type", is("Midnight Snack")))
+        .andExpect(jsonPath("$[1].date", is("2017-06-05")));
   }
 
   @Test
   public void postMeal_Dinner_Cucumber_200() throws Exception {
     Meal meal = new Meal("Dinner", "cucumber", 200);
-    ObjectMapper mapper = new ObjectMapper();
     String jsonInput = mapper.writeValueAsString(meal);
 
     mockMvc.perform(post("/meal")
@@ -88,7 +99,6 @@ public class MainRestControllerTest {
   @Test
   public void putMeal_Index_Out_of_Bounds() throws Exception {
     Meal meal = new Meal(10, "2017-06-04" , "Midnight Snack", "beer", 200);
-    ObjectMapper mapper = new ObjectMapper();
     String jsonInput = mapper.writeValueAsString(meal);
 
     mockMvc.perform(delete("/meal")
@@ -98,10 +108,9 @@ public class MainRestControllerTest {
         .andExpect(jsonPath("$.status", is("bad")));
   }
 
-    @Test
+  @Test
   public void putMeal_Add_Ham_to_Bacon_500() throws Exception {
     Meal meal = new Meal(1, "2017-06-04" , "Breakfast", "bacon and ham", 500);
-    ObjectMapper mapper = new ObjectMapper();
     String jsonInput = mapper.writeValueAsString(meal);
 
     mockMvc.perform(put("/meal")
@@ -113,8 +122,7 @@ public class MainRestControllerTest {
 
   @Test
   public void deleteMeal_Midnight_Snack() throws Exception {
-    Meal meal = new Meal(3, "2017-06-04" , "Midnight Snack", "beer", 200);
-    ObjectMapper mapper = new ObjectMapper();
+    Meal meal = new Meal(4, "2017-06-05" , "Midnight Snack", "beer", 200);
     String jsonInput = mapper.writeValueAsString(meal);
 
     mockMvc.perform(delete("/meal")
@@ -126,8 +134,7 @@ public class MainRestControllerTest {
 
   @Test
   public void deleteMeal_Index_Out_of_Bounds() throws Exception {
-    Meal meal = new Meal(10, "2017-06-04" , "Midnight Snack", "beer", 200);
-    ObjectMapper mapper = new ObjectMapper();
+    Meal meal = new Meal(10, "2017-06-05" , "Midnight Snack", "beer", 200);
     String jsonInput = mapper.writeValueAsString(meal);
 
     mockMvc.perform(delete("/meal")
