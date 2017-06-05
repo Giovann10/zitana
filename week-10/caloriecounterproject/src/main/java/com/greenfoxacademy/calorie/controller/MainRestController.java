@@ -17,23 +17,23 @@ public class MainRestController {
   @Autowired
   MealRepository mealRepository;
 
-  @RequestMapping(value = "/getmeal" , method = RequestMethod.GET)
+  @RequestMapping(value = "/getmeal", method = RequestMethod.GET)
   public List<Meal> getmMeals() {
     return mealRepository.findAllByOrderById();
   }
 
-  @RequestMapping(value = "/getstats" , method = RequestMethod.GET)
+  @RequestMapping(value = "/getstats", method = RequestMethod.GET)
   public Statistics getStats() {
     return new Statistics(mealRepository.findAllByOrderById());
   }
 
-  @RequestMapping(value = "/meal" , method = RequestMethod.POST)
+  @RequestMapping(value = "/meal", method = RequestMethod.POST)
   public Meal postMeal(@RequestBody Meal meal) {
     mealRepository.save(meal);
     return meal;
   }
 
-  @RequestMapping(value = "/meal" , method = RequestMethod.PUT)
+  @RequestMapping(value = "/meal", method = RequestMethod.PUT)
   public Response updateMeal(@RequestBody Meal meal) {
     try {
       Meal myMeal = mealRepository.findOne(meal.getId());
@@ -46,20 +46,16 @@ public class MainRestController {
     }
   }
 
-  @RequestMapping(value = "/meal" , method = RequestMethod.DELETE)
+  @RequestMapping(value = "/meal", method = RequestMethod.DELETE)
   public Response deleteMeal(@RequestBody Meal meal) {
-    String status = "";
+    String status = "bad";
     try {
       mealRepository.delete(meal.getId());
-      if (mealRepository.findAllByOrderById().contains(mealRepository.findOne(meal.getId()))) {
-        status = "bad";
-      } else {
-        status = "ok";
-      }
-    } catch (NullPointerException ex) {
-        System.out.println("No meal with this ID");
-      }
-      return new Response(status);
+      status = "ok";
+    } catch (Exception ex) {
+      System.out.println("No meal with this ID");
     }
+    return new Response(status);
+  }
 
 }
