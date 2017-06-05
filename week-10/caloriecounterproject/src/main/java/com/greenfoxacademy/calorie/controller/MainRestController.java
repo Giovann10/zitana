@@ -28,9 +28,9 @@ public class MainRestController {
   }
 
   @RequestMapping(value = "/meal" , method = RequestMethod.POST)
-  public List<Meal> postMeal(@RequestBody Meal meal) {
+  public Meal postMeal(@RequestBody Meal meal) {
     mealRepository.save(meal);
-    return mealRepository.findAllByOrderById();
+    return meal;
   }
 
   @RequestMapping(value = "/meal" , method = RequestMethod.PUT)
